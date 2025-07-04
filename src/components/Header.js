@@ -1,35 +1,29 @@
-import {useNavigation} from '@react-navigation/native';
-import {StatusBar, StyleSheet, TouchableOpacity, View} from 'react-native';
-import fonts from '../assets/fonts';
-import {COLORS} from '../utils/COLORS';
-import CustomText from './CustomText';
-import Icons from './Icons';
+import { useNavigation } from "@react-navigation/native";
+import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
+import fonts from "../assets/fonts";
+import { COLORS } from "../utils/COLORS";
+import CustomText from "./CustomText";
+import Icons from "./Icons";
+import ImageFast from "./ImageFast";
+import { Images } from "../assets/images";
+import SearchBar from "./SearchBar";
 
-const Header = ({title, isBack = true, leftIcon}) => {
-  const navigation = useNavigation();
+const Header = ({}) => {
   return (
     <View style={styles.mainContainer}>
-      {isBack && (
-        <TouchableOpacity
-          style={styles.back}
-          onPress={() => navigation.goBack()}>
-          <Icons
-            size={20}
-            family={'IonIcons'}
-            color={COLORS.black}
-            name={'chevron-back'}
-          />
-        </TouchableOpacity>
-      )}
-      <CustomText
-        label={title}
-        fontSize={17}
-        fontFamily={fonts.semiBold}
-        color={COLORS.secondaryColor}
-        textAlign={'center'}
-        alignSelf={'center'}
+      <ImageFast source={Images.user} style={styles.logo} />
+      <SearchBar
+        placeHolder="Item, User, brand"
+        containerStyle={{ width: "65%" }}
       />
-      {leftIcon && leftIcon}
+      <View style={styles.iconsRow}>
+        <TouchableOpacity>
+          <Icons family="Feather" name="bookmark" size={24} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icons family="Feather" name="mail" size={24} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -38,23 +32,22 @@ export default Header;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
     paddingHorizontal: 20,
     marginBottom: 10,
-    justifyContent: 'center',
+    justifyContent: "space-between",
     paddingVertical: 10,
     marginTop: StatusBar.currentHeight,
   },
-  back: {
-    width: 41,
-    height: 41,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    left: 20,
-    backgroundColor: COLORS.gray2,
-    borderRadius: 12,
+  iconsRow: {
+    flexDirection: "row",
+    columnGap: 10,
+  },
+  logo: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
   },
 });

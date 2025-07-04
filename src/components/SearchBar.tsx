@@ -46,18 +46,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <View style={[styles.mainBox, containerStyle]}>
       <Pressable onPress={onSearchPress} style={styles.container}>
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.iconBox}
-          onPress={onSearchPress}
-        >
-          <Icons
-            size={23}
-            color={"#fff"}
-            name={"search"}
-            family={"EvilIcons"}
-          />
-        </TouchableOpacity>
         {!editable ? (
           <TouchableOpacity
             activeOpacity={0.5}
@@ -76,10 +64,17 @@ const SearchBar: React.FC<SearchBarProps> = ({
             placeholder={placeHolder}
             onChangeText={onChangeText}
             onEndEditing={onEndEditing}
-            cursorColor={Colors.PRIMARY}
-            placeholderTextColor={Colors.DARK_GREY}
+            cursorColor={Colors.BLACK}
+            placeholderTextColor={Colors.GREY}
           />
         )}
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.iconBox}
+          onPress={onSearchPress}
+        >
+          <Icons size={23} color={"#000"} name={"search"} family={"Feather"} />
+        </TouchableOpacity>
       </Pressable>
     </View>
   );
@@ -93,11 +88,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: Colors.GREY,
-    borderRadius: 8,
+    backgroundColor: Colors.GREY6,
+    borderRadius: 30,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: Colors.LIGHT_GREY,
   },
   container: {
     flexDirection: "row",
@@ -124,7 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   iconBox: {
-    backgroundColor: Colors.PRIMARY,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",

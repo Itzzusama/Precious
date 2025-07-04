@@ -48,7 +48,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   children,
   statusBarColor = Colors.WHITE,
   translucent = false,
-  scrollEnabled = false,
+  scrollEnabled = true,
   backgroundImage,
   backgroundColor = Colors.WHITE,
   headerUnScrollable = () => null,
