@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Colors } from '../config/colors';
 import PolicyPage from '../screens/PolicyPage';
-import Login from '../screens/Login';
+import Login from '../screens/Auth/Login';
 import { AuthenticationNavigatorScreenNames } from '../config/enums';
 import { HeaderBackChevron } from '../components/presentation/NavigationComponents';
 
