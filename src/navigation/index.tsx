@@ -21,7 +21,7 @@ interface RootState {
 }
 
 const RootNavigation: React.FC = () => {
-  const isToken = useSelector((state: RootState) => state.authConfig.token);
+  // const isToken = useSelector((state: RootState) => state.authConfig.token);
 
   return (
     <Stack.Navigator
@@ -30,11 +30,11 @@ const RootNavigation: React.FC = () => {
         animation: "slide_from_bottom",
       }}
     >
-      {isToken ? (
-        <Stack.Screen name="MainStack" component={MainStack} />
-      ) : (
+      {/* {isToken ? ( */}
+        {/* <Stack.Screen name="MainStack" component={MainStack} /> */}
+      {/* ) : ( */}
         <Stack.Screen name="AuthStack" component={AuthStack} />
-      )}
+      {/* )} */}
     </Stack.Navigator>
   );
 };

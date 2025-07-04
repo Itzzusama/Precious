@@ -1,24 +1,21 @@
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import { RootSiblingParent } from 'react-native-root-siblings';
-import Login from './screens/Auth/Login';
+import { NewAppScreen } from "@react-native/new-app-screen";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar, StyleSheet, View } from "react-native";
+import { RootSiblingParent } from "react-native-root-siblings";
+import RootNavigation from "./navigation";
+import CustomText from "./components/CustomText";
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    // <View style={styles.container}>
-    //   <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-    //   <NewAppScreen templateFileName="App.tsx" />
-    // </View>
-    <RootSiblingParent>
-      <StatusBar barStyle="dark-light" backgroundColor={"black"} />
-                  
-                    
-
-    </RootSiblingParent>
-
+    <View>
+      <CustomText label={"gelloe"} />
+    </View>
+    // <RootSiblingParent>
+    //   {/* <StatusBar barStyle="dark-light" backgroundColor={"black"} /> */}
+    //   {/* <NavigationContainer>
+    //     <RootNavigation />
+    //   </NavigationContainer> */}
+    // </RootSiblingParent>
   );
 };
 

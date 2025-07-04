@@ -13,9 +13,7 @@ class AppProvider extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ErrorBoundary FallbackComponent={ErrorBoundaryScreen} key={0}>
             <App />
-          </ErrorBoundary>
         </PersistGate>
       </Provider>
     );

@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ScreenWrapper from '../../components/ScreenWrapper'
+import CustomText from '../../components/CustomText'
 
 const Login = () => {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+  <ScreenWrapper >
+
+<CustomText label={"hello"}/>
+
+  </ScreenWrapper>
   )
 }
 
