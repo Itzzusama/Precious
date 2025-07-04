@@ -1,0 +1,248 @@
+import { StyleSheet } from 'react-native';
+import { Colors } from '../config/colors';
+
+const detailScreenStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.WHITE,
+  },
+  flexOne: {
+    flex: 1,
+  },
+  scrollViewBottomOffset: {
+    paddingBottom: 24,
+  },
+  overdueContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.WARNING,
+    padding: 8,
+    top: 0,
+    height: 45,
+  },
+  overdueText: {
+    fontSize: 16,
+    color: Colors.DARK_GREY,
+    marginLeft: 8,
+    fontFamily: 'FiraGO',
+  },
+  funeralContainer: {
+    flex: 1,
+    padding: 16,
+    paddingBottom: 100,
+  },
+  cardContainer: {
+    padding: 16,
+  },
+  fatalityCardContainer: {
+    width: '50%',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginBottom: 16,
+  },
+  cardLabel: {
+    fontSize: 16,
+    color: Colors.GREY,
+    fontWeight: '400',
+    fontFamily: 'FiraGO',
+  },
+  cardValue: {
+    fontSize: 16,
+    color: Colors.DARK_GREY,
+    fontWeight: '400',
+    marginTop: 4,
+  },
+  cardName: {
+    flex: 1,
+    fontSize: 24,
+    textAlign: 'left',
+    fontFamily: 'FiraGO',
+    fontWeight: '500',
+    marginLeft: 4,
+    marginRight: 16,
+    color: Colors.DARK_GREY,
+  },
+  rowContainerSpaceBetweenTop: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  rowContainerSpaceBetween: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  fatalityCardRowContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  itemContainer: {
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 4,
+    backgroundColor: Colors.LIGHT_GREY_WHITE,
+  },
+  itemContainerBorderTop: {
+    backgroundColor: Colors.WHITE,
+    borderTopWidth: 1,
+    borderTopColor: Colors.LIGHT_GREY_DARK,
+  },
+  eventTerminTitleIcon: {
+    paddingRight: 8,
+  },
+  eventTerminTitle: {
+    flex: 1,
+    fontSize: 24,
+    color: Colors.DARK_GREY,
+    fontWeight: 'bold',
+    fontFamily: 'FiraGO',
+  },
+  taskTerminTitle: {
+    flex: 1,
+    fontSize: 24,
+    color: Colors.DARK_GREY,
+    fontWeight: 'bold',
+    fontFamily: 'FiraGO',
+    marginRight: 8,
+  },
+  previewImage: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+  },
+  contactRowContainer: {
+    flex: 1,
+    marginVertical: 8,
+    marginRight: 8,
+  },
+  contactIcon: {
+    padding: 8,
+  },
+  contactActions: {
+    marginBottom: 24,
+  },
+  labelText: {
+    color: Colors.GREY,
+    fontSize: 16,
+    textAlign: 'left',
+    marginBottom: 4,
+    fontFamily: 'FiraGO',
+  },
+  redText: {
+    color: Colors.RED,
+    fontFamily: 'FiraGO',
+  },
+  darkGreyText: {
+    color: Colors.DARK_GREY,
+    fontFamily: 'FiraGO',
+  },
+  valueText: {
+    color: Colors.DARK_GREY,
+    fontSize: 16,
+    textAlign: 'left',
+    marginBottom: 8,
+    fontFamily: 'FiraGO',
+  },
+  valueTextBold: {
+    fontWeight: 'bold',
+  },
+  noPreviewImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: Colors.LIGHT_GREY,
+    marginHorizontal: 8,
+  },
+  smallHeaderText: {
+    color: Colors.DARK_GREY,
+    fontSize: 16,
+    textAlign: 'left',
+    fontFamily: 'FiraGO',
+  },
+  bottomContainer: {
+    zIndex: 100,
+    backgroundColor: Colors.WHITE,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    borderTopColor: Colors.GREY,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bottomButtonContainerCheck: {
+    height: '50%',
+    width: '90%',
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.ORANGE_ACTIVE,
+  },
+  bottomButtonContainerUncheck: {
+    height: '50%',
+    width: '90%',
+    borderColor: Colors.ORANGE_ACTIVE,
+    borderWidth: 3,
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.WHITE,
+  },
+  bottomButtonText: {
+    fontSize: 16,
+    color: Colors.WHITE,
+    fontWeight: '500',
+    marginLeft: 4,
+    fontFamily: 'FiraGO',
+  },
+  bottomButtonTextUncheck: {
+    fontSize: 16,
+    color: Colors.ORANGE_ACTIVE,
+    fontWeight: '500',
+    marginLeft: 4,
+    fontFamily: 'FiraGO',
+  },
+  taskCompletedContainer: {
+    backgroundColor: Colors.NAVY_BLUE_LIGHT,
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  taskCompletedText: {
+    fontFamily: 'FiraGO',
+    fontSize: 18,
+    lineHeight: 22,
+    color: Colors.ACTIVE,
+    fontWeight: '500',
+  },
+  taskCompletedTimestamp: {
+    fontFamily: 'FiraGO',
+    textAlign: 'center',
+    fontSize: 16,
+    lineHeight: 20,
+    marginTop: 4,
+    color: Colors.DARK_GREY,
+  },
+  navyBlueText: {
+    color: Colors.LIGHT_BLUE_LINK,
+    textDecorationLine: 'underline',
+  },
+  marginBottom8: {
+    marginBottom: 8,
+  },
+});
+
+export default detailScreenStyles;
