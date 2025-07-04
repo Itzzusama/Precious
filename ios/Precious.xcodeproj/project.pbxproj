@@ -31,6 +31,8 @@
 		BD955559C6034E33B07ED13B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7F96F3673214FB0AC61057A /* Roboto-Thin.ttf */; };
 		CD8645AC88194DD2A0CF5C18 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E73B2D21EBA64DCC9579A318 /* Roboto-ThinItalic.ttf */; };
 		D2FE81DE3CA0403A94AA178B /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = FED89A68311C4F4D946FCE91 /* index.ts */; };
+		EBFB9E6E34A64588B9DA3DCD /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD23B379E164664870B3E9C /* BootSplash.storyboard */; };
+		82A267D4FC9A4D61B32DC7AE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889C134729834D4F98112A8F /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		E7F96F3673214FB0AC61057A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; name = "Roboto-Thin.ttf"; path = "../src/assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E73B2D21EBA64DCC9579A318 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		FED89A68311C4F4D946FCE91 /* index.ts */ = {isa = PBXFileReference; name = "index.ts"; path = "../src/assets/fonts/index.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EAD23B379E164664870B3E9C /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "Precious/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		889C134729834D4F98112A8F /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "Precious/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				EAD23B379E164664870B3E9C /* BootSplash.storyboard */,
+				889C134729834D4F98112A8F /* Colors.xcassets */,
 			);
 			name = Precious;
 			sourceTree = "<group>";
@@ -246,6 +252,8 @@
 				BD955559C6034E33B07ED13B /* Roboto-Thin.ttf in Resources */,
 				CD8645AC88194DD2A0CF5C18 /* Roboto-ThinItalic.ttf in Resources */,
 				D2FE81DE3CA0403A94AA178B /* index.ts in Resources */,
+				EBFB9E6E34A64588B9DA3DCD /* BootSplash.storyboard in Resources */,
+				82A267D4FC9A4D61B32DC7AE /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

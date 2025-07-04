@@ -76,6 +76,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
   color = Colors.BLACK,
   height = 56,
   customize,
+  borderWidth,
 }) => {
   const isError =
     error !== undefined && error !== null && error !== true && error !== "";
@@ -107,11 +108,13 @@ const CustomInput: React.FC<CustomInputProps> = ({
           {
             marginBottom: isError ? 5 : marginBottom || 15,
             marginTop,
-            borderColor: Colors.LIGHT_GREY,
+            borderColor: Colors.BLACK,
             height: height,
             width: width || "100%",
             borderRadius: borderRadius || 8,
             backgroundColor: backgroundColor || Colors.WHITE,
+            borderBottomWidth:1
+            
           },
         ]}
       >
@@ -146,7 +149,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
           multiline={multiline}
           onEndEditing={onEndEditing}
           maxLength={maxLength}
-          placeholderTextColor={placeholderTextColor || Colors.GREY}
+          placeholderTextColor={placeholderTextColor || Colors.BLACK}
           editable={editable}
           textAlignVertical={multiline ? "top" : textAlignVertical}
           autoCapitalize={autoCapitalize}
@@ -161,7 +164,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
             <Icons
               size={20}
               family="Octicons"
-              color={Colors.GREY}
+              color={Colors.BLACK}
               name={!hidePass ? "eye" : "eye-closed"}
             />
           </TouchableOpacity>
@@ -179,7 +182,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    borderWidth: 1,
   },
   input: {
     height: "100%",

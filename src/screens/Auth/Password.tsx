@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ImageStyle, ViewStyle, TouchableOpacity } from "react-native";
+import { StyleSheet, View, ImageStyle, ViewStyle } from "react-native";
 import { useDispatch } from "react-redux";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
@@ -12,22 +12,21 @@ import fonts from "../../assets/fonts";
 import { Colors } from "../../config/colors";
 import { Images } from "../../assets/images";
 
-// Replace this with your actual navigation param types
 type RootStackParamList = {
   Login: undefined;
   // Add other screens as needed
 };
 
-const Login: React.FC = () => {
+const Password: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const init = {
-    email: "",
+    password: "",
   };
 
   const inits = {
-    emailError: "",
+    passwordError: "",
   };
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -37,10 +36,10 @@ const Login: React.FC = () => {
   const array = [
     {
       id: 1,
-      placeholder: "Your Email*",
-      value: state.email,
-      onChange: (text: string) => setState({ ...state, email: text }),
-      error: errors?.emailError,
+      placeholder: "Your password",
+      value: state.password,
+      onChange: (text: string) => setState({ ...state, password: text }),
+      error: errors?.passwordError,
       autoCapitalize: "none" as const,
     },
   ];
@@ -74,12 +73,14 @@ const Login: React.FC = () => {
           autoCapitalize={item.autoCapitalize}
           error={item.error}
           backgroundColor="transparent"
+          secureTextEntry
         />
       ))}
+      <CustomText label="Forgot Password?" alignSelf="flex-end" />
 
       <CustomButton
         title="Continue"
-        onPress={() => navigation.navigate("Password")}
+        // onPress={handleLogin}
         color={Colors.WHITE}
         backgroundColor={Colors.BLACK}
         borderRadius={2}
@@ -89,44 +90,11 @@ const Login: React.FC = () => {
           (key) => errors[key as keyof typeof errors] !== ""
         )}
       />
-      
-
-      <CustomText label="or" alignSelf="center" marginTop={30} />
-
-      <View style={[styles.row,{justifyContent:'space-evenly', marginTop:30}]}>
-        <TouchableOpacity>
-          <ImageFast source={Images.apple} style={styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <ImageFast source={Images.google} style={styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <ImageFast source={Images.facebook} style={styles.logo} />
-        </TouchableOpacity>
-      </View>
-
-
-      <CustomText
-        label={`Forgot user name or password or with which platform you signed in?\nWe can help You`}
-        alignSelf="center"
-        marginTop={10}
-        textAlign="center"
-        fontFamily={fonts.medium}
-        width="70%"
-      />
-
-      <CustomText
-        label="Forgot Login?"
-        alignSelf="center"
-        marginTop={30}
-        textDecorationLine="underline"
-        fontFamily={fonts.semiBold}
-      />
     </ScreenWrapper>
   );
 };
 
-export default Login;
+export default Password;
 
 const styles = StyleSheet.create({
   row: {
@@ -140,13 +108,6 @@ const styles = StyleSheet.create({
     width: 70,
     alignSelf: "center",
     marginTop: 80,
-  } as ImageStyle,
-  logo: {
-    height: 60,
-    width: 60,
-    padding: 14,
-    backgroundColor: "#B29981",
-    borderRadius: 99,
   } as ImageStyle,
   line: {
     height: 50,

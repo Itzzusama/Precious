@@ -3,8 +3,9 @@ import React, { useState } from "react";
 
 import CustomText from "./CustomText";
 
-import { Colors } from "../config/colors";
+
 import fonts from "../assets/fonts";
+import { Colors } from "../config/colors";
 
 const CustomButton = ({
   onPress,
@@ -65,10 +66,10 @@ const CustomButton = ({
         style={[
           {
             backgroundColor: disabled
-              ? COLORS.gray
+              ? Colors.gray
               : backgroundColor
               ? backgroundColor
-              : COLORS.primaryColor,
+              : Colors.primaryColor,
 
             width: "100%",
             height,
@@ -88,14 +89,14 @@ const CustomButton = ({
         {loading && (
           <ActivityIndicator
             size={25}
-            color={indicatorcolor ? COLORS.primaryColor : COLORS.white}
+            color={indicatorcolor ? Colors.primaryColor : Colors.white}
           />
         )}
         {!loading && (
           <CustomText
             textStyle={customText}
             label={title}
-            color={color ? color : COLORS.white}
+            color={color ? color : Colors.white}
             fontFamily={fonts.semiBold}
             fontSize={fontSize || 15}
             lineHeight={22}
