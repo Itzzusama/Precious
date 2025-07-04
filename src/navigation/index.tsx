@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 
 import AuthStack from "./AuthStack";
 import MainStack from "./MainStack";
+import { RootState } from "../state/store";
 
-// Define the RootStackParamList type if you want better typing
 type RootStackParamList = {
   AuthStack: undefined;
   MainStack: undefined;
@@ -13,15 +13,8 @@ type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-// Define the shape of your Redux state
-interface RootState {
-  authConfig: {
-    token: string | null;
-  };
-}
-
 const RootNavigation: React.FC = () => {
-  // const isToken = useSelector((state: RootState) => state.authConfig.token);
+  const isToken = useSelector((state: RootState) => state?.userReducer?.token);
 
   return (
     <Stack.Navigator
@@ -30,11 +23,11 @@ const RootNavigation: React.FC = () => {
         animation: "slide_from_bottom",
       }}
     >
-      {/* {isToken ? ( */}
-        {/* <Stack.Screen name="MainStack" component={MainStack} /> */}
-      {/* ) : ( */}
+      {!isToken ? (
+        <Stack.Screen name="MainStack" component={MainStack} />
+      ) : (
         <Stack.Screen name="AuthStack" component={AuthStack} />
-      {/* )} */}
+      )}
     </Stack.Navigator>
   );
 };

@@ -1,28 +1,23 @@
-import { NewAppScreen } from "@react-native/new-app-screen";
-import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar, StyleSheet, View } from "react-native";
-import { RootSiblingParent } from "react-native-root-siblings";
-import RootNavigation from "./navigation";
-import CustomText from "./components/CustomText";
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { persistor, store } from './state/store';
+import RootNavigation from './navigation';
+
 
 const App = () => {
   return (
-    <View>
-      <CustomText label={"gelloe"} />
-    </View>
-    // <RootSiblingParent>
-    //   {/* <StatusBar barStyle="dark-light" backgroundColor={"black"} /> */}
-    //   {/* <NavigationContainer>
-    //     <RootNavigation />
-    //   </NavigationContainer> */}
-    // </RootSiblingParent>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer>
+            <RootNavigation />
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+    </GestureHandlerRootView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
