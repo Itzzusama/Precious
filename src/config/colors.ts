@@ -7,9 +7,9 @@ export enum Colors {
   SECONDARY = "#686c72",
   WHITE = "#FFF",
   LIGHT_WHITE = "rgba(255,255,255,0.9)",
-  BLACK = "#000",
+  BLACK = "#000000",
   DARK_GREY = "#28313F",
-  GREY = "#5F7391",
+  GREY = "#8E8E93",
   LIGHT_GREY = "#D8DCE2",
   LIGHT_GREY_WHITE = "#F2F2F2",
   LIGHT_GREY_DARK = "#E1E1E1",
@@ -23,4 +23,6 @@ export enum Colors {
   GREY_LOADING_BAR = "#8D8D8D",
   TRANSPARENT = "transparent",
   RED = "#D10321",
+  GREY2 = "#AEAEB2",
+  GREY6 = "#F2F2F7",
 }

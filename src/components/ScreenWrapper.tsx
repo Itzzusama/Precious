@@ -3,6 +3,7 @@ import { useIsFocused } from "@react-navigation/native";
 import React, { ReactNode } from "react";
 import {
   Dimensions,
+  Platform,
   RefreshControlProps,
   SafeAreaView,
   StatusBar,
@@ -47,7 +48,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   children,
   statusBarColor = Colors.WHITE,
   translucent = false,
-  scrollEnabled = false,
+  scrollEnabled = true,
   backgroundImage,
   backgroundColor = Colors.WHITE,
   headerUnScrollable = () => null,
@@ -72,7 +73,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
         backgroundColor={statusBarColor}
         translucent={translucent}
       />
-      {!translucent && (
+      {!translucent && Platform.OS === "ios" && (
         <SafeAreaView
           style={[styles.container, { backgroundColor: statusBarColor }]}
         />
