@@ -1,12 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, View } from "react-native";
 
 const Explore = () => {
-  return (
-    <View>
-      <Text>Explore</Text>
-    </View>
-  );
+  return <View></View>;
 };
 
 export default Explore;

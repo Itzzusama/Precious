@@ -23,11 +23,11 @@ const RootNavigation: React.FC = () => {
         animation: "slide_from_bottom",
       }}
     >
-      {/* {!isToken ? (
+      {!isToken ? (
         <Stack.Screen name="MainStack" component={MainStack} />
-      ) : ( */}
+      ) : (
         <Stack.Screen name="AuthStack" component={AuthStack} />
-      {/* )} */}
+      )}
     </Stack.Navigator>
   );
 };
