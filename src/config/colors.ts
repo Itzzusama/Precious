@@ -23,7 +23,6 @@ export enum Colors {
   GREY_LOADING_BAR = "#8D8D8D",
   TRANSPARENT = "transparent",
   RED = "#D10321",
-  authBg="#CaaE93"
+  authBg="#CaaE93",
   GREY2 = "#AEAEB2",
-  GREY6 = "#F2F2F7",
 }

@@ -9,12 +9,13 @@ import Header from "../../components/Header";
 
 const Explore = () => {
   return (
-    <ScreenWrapper paddingHorizontal={0.1}>
+    <ScreenWrapper paddingHorizontal={0.1} scrollEnabled>
       <Header />
       <FilterButtons />
       <Post />
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentStyle}
         data={[1, 2, 3, 4]}
         renderItem={() => (

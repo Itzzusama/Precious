@@ -80,7 +80,7 @@ const Password: React.FC = () => {
 
       <CustomButton
         title="Continue"
-        // onPress={handleLogin}
+        onPress={()=>navigation.navigate("MainStack")}
         color={Colors.WHITE}
         backgroundColor={Colors.BLACK}
         borderRadius={2}

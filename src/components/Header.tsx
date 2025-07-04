@@ -1,14 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
 import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
-import fonts from "../assets/fonts";
-import { COLORS } from "../utils/COLORS";
-import CustomText from "./CustomText";
+import { Images } from "../assets/images";
 import Icons from "./Icons";
 import ImageFast from "./ImageFast";
-import { Images } from "../assets/images";
 import SearchBar from "./SearchBar";
 
-const Header = ({}) => {
+interface HeaderProps {}
+
+const Header: React.FC<HeaderProps> = ({}) => {
   return (
     <View style={styles.mainContainer}>
       <ImageFast source={Images.user} style={styles.logo} />

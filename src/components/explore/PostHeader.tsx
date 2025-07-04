@@ -4,6 +4,7 @@ import CustomText from "../CustomText";
 import ImageFast from "../ImageFast";
 import Icons from "../Icons";
 import fonts from "../../assets/fonts";
+import { Images } from "../../assets/images";
 
 type HeaderProps = {
   user: any;
@@ -13,7 +14,7 @@ const PostHeader: React.FC<HeaderProps> = ({ user }) => {
   return (
     <View style={styles.container}>
       <View style={styles.row1}>
-        <ImageFast source={user?.avatar} style={styles.avatar} />
+        <ImageFast source={Images?.user} style={styles.avatar} />
         <CustomText
           fontSize={16}
           label={user?.name}

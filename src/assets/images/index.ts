@@ -1,9 +1,14 @@
 export const Images = {
-  logo: require("./logo.png"),
   explore: require("./explore.png"),
   inspiration: require("./inspiration.png"),
   profile: require("./profile.png"),
   connect: require("./connect.png"),
+
+  //auth
+  appLogo: require("./Logo.png"),
+  facebook: require("./facebook.png"),
+  google: require("./google.png"),
+  apple: require("./apple.png"),
 
   // temp
   post: require("./post.png"),
