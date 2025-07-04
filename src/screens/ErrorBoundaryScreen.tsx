@@ -1,17 +1,14 @@
-import React, { useEffect } from 'react';
+import React from "react";
 import {
   SafeAreaView,
-  View,
-  Text,
   StyleSheet,
+  Text,
   TouchableOpacity,
-  Platform,
-} from 'react-native';
-import { Colors } from '../config/colors';
-import { useAppSelector, useAppDispatch } from '../state/hooks';
-import RNRestart from 'react-native-restart';
-import VersionCheck from 'react-native-version-check';
-import detailScreenStyles from '../styles/DetailScreenStyles';
+  View,
+} from "react-native";
+import RNRestart from "react-native-restart";
+import { Colors } from "../config/colors";
+import detailScreenStyles from "../styles/DetailScreenStyles";
 
 const ErrorBoundaryScreen = (
   props: {
@@ -22,7 +19,7 @@ const ErrorBoundaryScreen = (
           resetError: () => void;
         }>
       | undefined;
-  } & { errorStacktrace?: string },
+  } & { errorStacktrace?: string }
 ) => {
   return (
     <SafeAreaView style={styles.container}>
@@ -55,53 +52,53 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: "flex-start",
+    alignItems: "center",
     padding: 16,
   },
   icon: {
     marginVertical: 16,
   },
   title: {
-    width: '100%',
+    width: "100%",
     marginVertical: 32,
     fontSize: 30,
     lineHeight: 34,
     color: Colors.DARK_GREY,
-    fontFamily: 'FiraGO',
-    textAlign: 'center',
+    fontFamily: "FiraGO",
+    textAlign: "center",
   },
   subTitle: {
-    width: '100%',
+    width: "100%",
     marginVertical: 16,
     fontSize: 20,
     lineHeight: 24,
     color: Colors.DARK_GREY,
-    fontFamily: 'FiraGO',
-    textAlign: 'center',
+    fontFamily: "FiraGO",
+    textAlign: "center",
   },
   bottomContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     borderTopColor: Colors.GREY,
     borderTopWidth: StyleSheet.hairlineWidth,
     height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   bottomButtonContainer: {
-    height: '50%',
-    width: '90%',
+    height: "50%",
+    width: "90%",
     borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.ORANGE_ACTIVE,
   },
   bottomButtonText: {
     fontSize: 16,
     color: Colors.WHITE,
-    fontFamily: 'FiraGO',
+    fontFamily: "FiraGO",
   },
 });

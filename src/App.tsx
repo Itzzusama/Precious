@@ -1,31 +1,23 @@
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import { RootSiblingParent } from 'react-native-root-siblings';
-import Login from './screens/Auth/Login';
+import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "./state/store";
+import RootNavigation from "./navigation";
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    // <View style={styles.container}>
-    //   <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-    //   <NewAppScreen templateFileName="App.tsx" />
-    // </View>
-    <RootSiblingParent>
-      <StatusBar barStyle="dark-light" backgroundColor={"black"} />
-                  
-                    
-
-    </RootSiblingParent>
-
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer>
+            <RootNavigation />
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+    </GestureHandlerRootView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;

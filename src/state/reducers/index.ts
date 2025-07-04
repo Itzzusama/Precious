@@ -1,10 +1,16 @@
-import settingsReducer, {settingsReducerInitialState} from './settingsReducer';
+import settingsReducer, {
+  settingsReducerInitialState,
+} from "./settingsReducer";
+import userReducer, { userReducerInitialState } from "./userReducer";
 
 const reducers = {
-    settingsReducer,
-  };
+  settingsReducer,
+  userReducer,
+};
 
 export {
-    settingsReducerInitialState,
-    reducers,
+  settingsReducerInitialState,
+  reducers,
+  userReducer,
+  userReducerInitialState,
 };

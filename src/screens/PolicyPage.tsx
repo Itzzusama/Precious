@@ -1,21 +1,20 @@
-import React from 'react';
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { Document } from "@contentful/rich-text-types";
+import React from "react";
 import {
+  Appearance,
+  Dimensions,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Dimensions,
-  Appearance,
-  Platform,
-} from 'react-native';
-import {Statusbar} from '../components/presentation/Statusbar';
-import {Colors} from '../config/colors';
-import {useAppSelector} from '../state/hooks';
-import {documentToHtmlString} from '@contentful/rich-text-html-renderer';
-import {Document} from '@contentful/rich-text-types';
-import RenderHtml from 'react-native-render-html';
+} from "react-native";
+import RenderHtml from "react-native-render-html";
+import { Statusbar } from "../components/presentation/Statusbar";
+import { Colors } from "../config/colors";
 
 const PolicyPage = () => {
-  const darkModeEnabled = Appearance.getColorScheme() === 'dark';
+  const darkModeEnabled = Appearance.getColorScheme() === "dark";
 
   return (
     <SafeAreaView
@@ -23,35 +22,37 @@ const PolicyPage = () => {
         styles.container,
         {
           backgroundColor:
-            darkModeEnabled && Platform.OS === 'android'
+            darkModeEnabled && Platform.OS === "android"
               ? Colors.BLACK
               : Colors.WHITE,
         },
-      ]}>
+      ]}
+    >
       <Statusbar barStyle="dark-content" />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.scrollView}
-        bounces={false}>
-        {activePolicy === 'Datenschutz' &&
+        bounces={false}
+      >
+        {activePolicy === "Datenschutz" &&
           dataPolicyContent.map((item, index) => {
             const policyContent = item as unknown as Document;
             return (
               <RenderHtml
                 key={index}
-                contentWidth={Dimensions.get('screen').width}
-                source={{html: String(documentToHtmlString(policyContent))}}
+                contentWidth={Dimensions.get("screen").width}
+                source={{ html: String(documentToHtmlString(policyContent)) }}
               />
             );
           })}
-        {activePolicy === 'Impressum' &&
+        {activePolicy === "Impressum" &&
           impressumContent.map((item, index) => {
             const policyContent = item as unknown as Document;
             return (
               <RenderHtml
                 key={index}
-                contentWidth={Dimensions.get('screen').width}
-                source={{html: String(documentToHtmlString(policyContent))}}
+                contentWidth={Dimensions.get("screen").width}
+                source={{ html: String(documentToHtmlString(policyContent)) }}
               />
             );
           })}
