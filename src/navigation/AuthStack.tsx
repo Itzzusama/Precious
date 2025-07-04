@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import Login from "../screens/Auth/Login";
+import OnBoarding from "../screens/Auth/OnBoarding";
 
 // Define the stack parameter list
 type AuthStackParamList = {
@@ -17,6 +18,7 @@ const AuthStack: React.FC = () => {
         animation: "slide_from_bottom",
       }}
     >
+      <Stack.Screen name="OnBoarding" component={OnBoarding} />
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );

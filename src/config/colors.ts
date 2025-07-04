@@ -25,4 +25,5 @@ export enum Colors {
   RED = '#D10321',
   black="#000000",
   white="white",
+  authBg="#CaaE93"
 }
