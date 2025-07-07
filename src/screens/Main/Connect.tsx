@@ -58,7 +58,6 @@ const Connect: React.FC = () => {
     <ScreenWrapper
       scrollEnabled
       backgroundColor="white"
-      paddingBottom={70}
       paddingHorizontal={12}
       headerUnScrollable={() => <Header />}
     >
