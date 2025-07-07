@@ -78,7 +78,7 @@ const ShoppingCard: React.FC<ShoppingCardProps> = ({
               <CustomText
                 label={Price || "$ 3000"}
                 fontFamily={fonts.semiBold}
-                marginTop={10}
+                marginTop={4}
               />
               <CustomText
                 label={Country || "United States"}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   TouchableOpacity,
   LayoutAnimation,
@@ -6,13 +6,13 @@ import {
   ScrollView,
   UIManager,
   View,
-} from 'react-native';
+} from "react-native";
 
-import CustomText from './CustomText';
-import Icons from './Icons';
+import CustomText from "./CustomText";
+import Icons from "./Icons";
 
-import { Colors } from '../config/colors';
-import fonts from '../assets/fonts';
+import { Colors } from "../config/colors";
+import fonts from "../assets/fonts";
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -32,6 +32,8 @@ interface CustomDropdownProps {
   placeholder?: string;
   error?: string;
   withLabel?: string;
+  paddingHorizontal?: string;
+  height?: string;
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -39,12 +41,14 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   value,
   setValue,
   showIcon,
-  placeholder = 'Select',
+  placeholder = "Select",
   error,
   withLabel,
+  paddingHorizontal,
+  height,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const toggleDropdown = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -53,10 +57,10 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 
   const selectOption = (option: OptionType | string) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    if (typeof option === 'object' && option?._id) {
+    if (typeof option === "object" && option?._id) {
       setValue(option._id);
-      setText(option.title || '');
-    } else if (typeof option === 'string') {
+      setText(option.title || "");
+    } else if (typeof option === "string") {
       setValue(option);
       setText(option);
     }
@@ -85,18 +89,25 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
       >
         <TouchableOpacity
           activeOpacity={0.6}
-          style={styles.container}
+          style={[
+            styles.container,
+            {
+              paddingHorizontal: paddingHorizontal || 20,
+              height: height || 52,
+            },
+          ]}
           onPress={toggleDropdown}
         >
           <CustomText
             label={text || value || placeholder}
-            color={Colors.GREY}
+            color={Colors.BLACK}
+            fontFamily={fonts.semiBold}
           />
           {!showIcon ? (
             <Icons
               style={{ color: Colors.PRIMARY, fontSize: 20 }}
               family="Entypo"
-              name={isOpen ? 'chevron-up' : 'chevron-down'}
+              name={isOpen ? "chevron-up" : "chevron-down"}
             />
           ) : (
             <View />
@@ -117,11 +128,11 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
               >
                 <CustomText
                   label={
-                    typeof option === 'string'
+                    typeof option === "string"
                       ? option
                       : option._id
                       ? option.title
-                      : ''
+                      : ""
                   }
                   fontSize={12}
                 />
@@ -147,21 +158,20 @@ export default CustomDropdown;
 
 const styles = StyleSheet.create({
   dropdownMainContainer: {
-    width: '100%',
+    width: "100%",
     maxHeight: 200,
-    overflow: 'scroll',
+    overflow: "scroll",
     borderWidth: 1,
     backgroundColor: Colors.WHITE,
   },
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    width: '100%',
-    height: 52,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+
     backgroundColor: Colors.WHITE,
-    overflow: 'scroll',
+    overflow: "scroll",
   },
   list: {
     borderTopWidth: 1,

@@ -41,11 +41,11 @@ const ConnectCard: React.FC<Props> = ({
 
       {/* Middle: Text Info */}
       <View style={styles.infoContainer}>
-        <CustomText style={styles.name} label={name || "susann35"} fontFamily={fonts.bold}/>
-        <CustomText style={styles.brand}>
+        <CustomText textStyle={styles.name} label={name || "susann35"} fontFamily={fonts.bold}/>
+        <CustomText textStyle={styles.brand}>
           {brandName || "Fashionbrand"}
         </CustomText>
-        <CustomText style={styles.followers}>
+        <CustomText textStyle={styles.followers}>
           {followers || "400 Mio. Follower • 1000 Items"}{" "}
         </CustomText>
       </View>

@@ -18,17 +18,39 @@ import { Colors } from "../../config/colors";
 
 import ShoppingCard from "../../components/Connect/ShoppingCard";
 import FilterModal from "../../Modals/FilterModal";
+import ProfileBottomSheet from "../../Modals/ProfileBottomSheet";
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState<"items" | "forSale" | "posts">(
     "items"
   );
   const [filterModal, setFilterModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
   const handleTabPress = (tab: "items" | "forSale" | "posts") => {
     setActiveTab(tab);
   };
 
   const items = [
+    {
+      image: Images.product,
+      title: "Patek Philippe",
+      subtitle: "Calatrava yellow gold…",
+    },
+    {
+      image: Images.product,
+      title: "GUCCI Shoes",
+      subtitle: "Stilettos, Leather, red…",
+    },
+    {
+      image: Images.product,
+      title: "Patek Philippe",
+      subtitle: "Calatrava yellow gold…",
+    },
+    {
+      image: Images.product,
+      title: "GUCCI Shoes",
+      subtitle: "Stilettos, Leather, red…",
+    },
     {
       image: Images.product,
       title: "Patek Philippe",
@@ -66,7 +88,9 @@ const UserProfile = () => {
       backgroundColor="white"
       scrollEnabled
       paddingHorizontal={0.1}
-      headerUnScrollable={() => <Header isBack />}
+      headerUnScrollable={() => (
+        <Header isBack onMorePress={() => setProfileModal(true)} />
+      )}
     >
       <View style={styles.headerContainer}>
         {/* Avatar */}
@@ -297,6 +321,10 @@ const UserProfile = () => {
         isVisible={filterModal}
         onDisable={() => setFilterModal(false)}
       />
+      <ProfileBottomSheet
+        isVisible={profileModal}
+        onDisable={() => setProfileModal(false)}
+      />
     </ScreenWrapper>
   );
 };
@@ -339,15 +367,14 @@ const styles = StyleSheet.create({
   buttonsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 14,
     paddingHorizontal: 20,
   },
   tabsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 18,
+    marginTop: 24,
     alignItems: "center",
     paddingHorizontal: 20,
   },

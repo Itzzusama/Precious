@@ -12,7 +12,7 @@ import fonts from "../assets/fonts";
 import { Colors } from "../config/colors";
 
 type CustomButtonProps = {
-  onPress: () => void;
+  onPress?: () => void;
   title: string;
   disabled?: boolean;
   loading?: boolean;

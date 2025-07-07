@@ -8,9 +8,10 @@ import { Colors } from "../config/colors";
 
 interface HeaderProps {
   isBack?: Boolean;
+  onMorePress?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ isBack = true }) => {
+const Header: React.FC<HeaderProps> = ({ isBack = true,onMorePress }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
@@ -33,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ isBack = true }) => {
             size={24}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onMorePress}>
           <Icons
             family="Feather"
             name={isBack ? "more-horizontal" : "mail"}
