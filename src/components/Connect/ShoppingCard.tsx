@@ -5,11 +5,14 @@ import ImageFast from "../ImageFast";
 import CustomText from "../CustomText";
 import { Colors } from "../../config/colors";
 import fonts from "../../assets/fonts";
+import { Images } from "../../assets/images";
 
 type ShoppingCardProps = {
   image: number;
   title: string;
   subtitle: string;
+  Price: string;
+  Country: string;
   onStarPress: () => void;
   onBookmarkPress: () => void;
 };
@@ -18,39 +21,74 @@ const ShoppingCard: React.FC<ShoppingCardProps> = ({
   image,
   title,
   subtitle,
+  Price,
+  Country,
+  Post,
   onStarPress,
   onBookmarkPress,
+  forSale,
 }) => {
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.cardHeader}>
-        <TouchableOpacity onPress={onStarPress}>
-          <Icons family="Feather" name="star" size={22} color={Colors.GREY} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onBookmarkPress}>
-          <Icons
-            family="Feather"
-            name="bookmark"
-            size={22}
-            color={Colors.GREY}
+    <>
+      {Post ? (
+        <View style={styles.Image}>
+          <ImageFast
+            isView
+            source={Images.post}
+            style={{ height: "100%", width: "100%" }}
           />
-        </TouchableOpacity>
-      </View>
-      <ImageFast source={image} style={styles.cardImage} resizeMode="contain" />
-      <CustomText
-        label={title}
-        fontSize={18}
-        fontFamily={fonts.semiBold}
-        marginTop={10}
-        numberOfLines={1}
-      />
-      <CustomText
-        label={subtitle}
-        fontSize={14}
-        color={Colors.GREY}
-        numberOfLines={1}
-      />
-    </View>
+        </View>
+      ) : (
+        <View style={styles.cardContainer}>
+          <View style={styles.cardHeader}>
+            <TouchableOpacity onPress={onStarPress}>
+              <Icons
+                family="Feather"
+                name="star"
+                size={22}
+                color={Colors.GREY}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onBookmarkPress}>
+              <Icons
+                family="Feather"
+                name="bookmark"
+                size={22}
+                color={Colors.GREY}
+              />
+            </TouchableOpacity>
+          </View>
+          <ImageFast
+            source={image}
+            style={styles.cardImage}
+            resizeMode="contain"
+          />
+          <CustomText
+            label={title}
+            fontSize={18}
+            fontFamily={fonts.bold}
+            marginTop={10}
+            numberOfLines={1}
+          />
+          <CustomText label={subtitle} fontSize={14} numberOfLines={1} />
+          {forSale && (
+            <>
+              <CustomText
+                label={Price || "$ 3000"}
+                fontFamily={fonts.semiBold}
+                marginTop={10}
+              />
+              <CustomText
+                label={Country || "United States"}
+                fontSize={12}
+                color={Colors.GREY}
+                numberOfLines={1}
+              />
+            </>
+          )}
+        </View>
+      )}
+    </>
   );
 };
 
@@ -58,16 +96,12 @@ export default ShoppingCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
-    flex: 1,
     backgroundColor: Colors.WHITE,
     borderWidth: 1,
-    borderColor: Colors.LIGHT_GREY,
-    borderRadius: 8,
-    margin: 6,
+    borderColor: "#D1D1D6",
     padding: 12,
-    alignItems: "center",
     minWidth: 160,
-    maxWidth: "48%",
+    maxWidth: "50%",
   },
   cardHeader: {
     flexDirection: "row",
@@ -79,5 +113,11 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     marginBottom: 8,
+    alignSelf: "center",
+  },
+  Image: {
+    height: 170,
+    width: "33%",
+    margin: 1,
   },
 });

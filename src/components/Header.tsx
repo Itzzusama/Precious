@@ -24,10 +24,18 @@ const Header: React.FC<HeaderProps> = ({ isBack }) => {
       />
       <View style={styles.iconsRow}>
         <TouchableOpacity>
-          <Icons family="Feather" name="bookmark" size={24} />
+          <Icons
+            family={isBack ? "Fontisto" : "Feather"}
+            name={isBack ? "share-a" : "bookmark"}
+            size={24}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Icons family="Feather" name="mail" size={24} />
+          <Icons
+            family="Feather"
+            name={isBack ? "more-horizontal" : "mail"}
+            size={24}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -42,10 +50,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
-    marginBottom: 10,
     justifyContent: "space-between",
-    paddingVertical: 10,
-    marginTop: StatusBar.currentHeight,
+    paddingVertical: 6,
+    // marginTop: StatusBar.currentHeight,
+    marginTop: 40,
   },
   iconsRow: {
     flexDirection: "row",
