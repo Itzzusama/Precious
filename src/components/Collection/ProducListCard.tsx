@@ -14,55 +14,58 @@ type cardProps = {
 const ProductListCard: React.FC<cardProps> = ({ item }) => {
   return (
     <View style={styles.cardContainer}>
-      <View style={styles.cardHeader}>
-        <ImageFast
-          source={Images.badge}
-          style={styles.badge}
-          resizeMode="contain"
-        />
-        <View style={styles.row}>
-          <Icons
-            size={18}
-            family="Feather"
-            name={item?.increment ? "arrow-up" : "arrow-down"}
-            color={item?.increment ? Colors.GREEN : Colors.RED}
-          />
-          <CustomText
-            fontFamily={fonts.medium}
-            label={item?.increment || item?.decrement}
-            color={item?.increment ? Colors.GREEN : Colors.RED}
-          />
-        </View>
-      </View>
       <ImageFast
         source={item?.image}
         resizeMode="contain"
         style={styles.cardImage}
       />
-      <CustomText
-        fontSize={17}
-        marginTop={10}
-        numberOfLines={1}
-        label={item?.title}
-        fontFamily={fonts.medium}
-      />
-      <CustomText
-        fontSize={14}
-        numberOfLines={1}
-        marginBottom={8}
-        label={item?.subtitle}
-      />
-      <View style={styles.row1}>
-        <CustomText label="Since" color={Colors.GREY2} />
-        <CustomText label={"03.2023"} fontFamily={fonts.semiBold} />
-      </View>
-      <View style={styles.row1}>
-        <CustomText label="Price" color={Colors.GREY2} />
-        <CustomText label={item?.price} fontFamily={fonts.semiBold} />
-      </View>
-      <View style={styles.row1}>
-        <CustomText label="New Price" color={Colors.GREY2} />
-        <CustomText label={item?.price} fontFamily={fonts.semiBold} />
+      <View style={{ flex: 1 }}>
+        <View style={styles.row1}>
+          <CustomText
+            fontSize={17}
+            numberOfLines={1}
+            label={item?.title}
+            fontFamily={fonts.medium}
+          />
+          <ImageFast
+            source={Images.badge}
+            style={styles.badge}
+            resizeMode="contain"
+          />
+        </View>
+        <CustomText
+          fontSize={14}
+          numberOfLines={1}
+          marginBottom={8}
+          label={item?.subtitle}
+        />
+        <View style={styles.row1}>
+          <CustomText label="Since" color={Colors.GREY2} />
+          <CustomText label={"03.2023"} fontFamily={fonts.semiBold} />
+        </View>
+        <View style={styles.row1}>
+          <CustomText label="Price" color={Colors.GREY2} />
+          <CustomText label={item?.price} fontFamily={fonts.semiBold} />
+        </View>
+        <View style={styles.row1}>
+          <View style={styles.row}>
+            <CustomText label="New Price" color={Colors.GREY2} />
+            <View style={styles.row}>
+              <Icons
+                size={18}
+                family="Feather"
+                name={item?.increment ? "arrow-up" : "arrow-down"}
+                color={item?.increment ? Colors.GREEN : Colors.RED}
+              />
+              <CustomText
+                fontFamily={fonts.medium}
+                label={item?.increment || item?.decrement}
+                color={item?.increment ? Colors.GREEN : Colors.RED}
+              />
+            </View>
+          </View>
+          <CustomText label={item?.price} fontFamily={fonts.semiBold} />
+        </View>
       </View>
     </View>
   );
@@ -72,24 +75,18 @@ export default ProductListCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#D1D1D6",
     backgroundColor: Colors.WHITE,
-    borderWidth: 1,
-    borderColor: "#D1D1D6",
-    padding: 12,
-    minWidth: 160,
-    maxWidth: "50%",
-  },
-  cardHeader: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-    marginBottom: 6,
+    alignItems: "center",
   },
   cardImage: {
-    width: 90,
-    height: 90,
-    marginBottom: 8,
+    width: 100,
+    height: 100,
     alignSelf: "center",
+    marginRight: 10,
   },
   badge: {
     height: 21,
