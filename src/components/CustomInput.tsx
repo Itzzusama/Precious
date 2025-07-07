@@ -76,7 +76,6 @@ const CustomInput: React.FC<CustomInputProps> = ({
   color = Colors.BLACK,
   height = 56,
   customize,
-  borderWidth,
 }) => {
   const isError =
     error !== undefined && error !== null && error !== true && error !== "";
@@ -113,8 +112,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
             width: width || "100%",
             borderRadius: borderRadius || 8,
             backgroundColor: backgroundColor || Colors.WHITE,
-            borderBottomWidth:1
-            
+            borderBottomWidth: 1,
           },
         ]}
       >

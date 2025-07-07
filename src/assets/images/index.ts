@@ -4,6 +4,7 @@ export const Images = {
   profile: require("./profile.png"),
   connect: require("./connect.png"),
   model: require("./model.png"),
+  badge: require("./badge.png"),
 
   //auth
   appLogo: require("./Logo.png"),

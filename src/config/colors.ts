@@ -26,4 +26,5 @@ export enum Colors {
   authBg = "#CaaE93",
   GREY2 = "#AEAEB2",
   GREY6 = "#F2F2F7",
+  GREEN = "#00CF61",
 }

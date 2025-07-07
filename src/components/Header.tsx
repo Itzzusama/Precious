@@ -1,4 +1,5 @@
 import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Images } from "../assets/images";
 import Icons from "./Icons";
 import ImageFast from "./ImageFast";
@@ -12,8 +13,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isBack = true }) => {
   const navigation = useNavigation();
+
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.mainContainer}>
+    <View style={[styles.mainContainer, { paddingTop: insets.top + 10 }]}>
       {isBack ? (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icons name="chevron-back" family="Ionicons" size={26} />
@@ -54,8 +57,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingHorizontal: 20,
     justifyContent: "space-between",
-    paddingVertical: 10,
-    marginTop: StatusBar.currentHeight,
+    paddingBottom: 10,
     backgroundColor: Colors.WHITE,
   },
   iconsRow: {
