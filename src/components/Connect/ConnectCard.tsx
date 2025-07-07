@@ -11,6 +11,7 @@ import { Images } from "../../assets/images";
 import CustomText from "../CustomText";
 import CustomButton from "../CustomButton";
 import { Colors } from "../../config/colors";
+import fonts from "../../assets/fonts";
 
 interface Props {
   name: string;
@@ -40,7 +41,7 @@ const ConnectCard: React.FC<Props> = ({
 
       {/* Middle: Text Info */}
       <View style={styles.infoContainer}>
-        <CustomText style={styles.name} label={name || "susann35"} />
+        <CustomText style={styles.name} label={name || "susann35"} fontFamily={fonts.bold}/>
         <CustomText style={styles.brand}>
           {brandName || "Fashionbrand"}
         </CustomText>
@@ -54,7 +55,8 @@ const ConnectCard: React.FC<Props> = ({
         <CustomButton
           title={"Follow"}
           width={"65%"}
-          borderColor={Colors.GREY}
+          backgroundColor={"#D1D1D6"}
+          borderColor={"#D1D1D6"}
           borderWidth={1}
           height={36}
           borderRadius={99}

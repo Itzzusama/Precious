@@ -12,6 +12,8 @@ type ShoppingCardProps = {
   title: string;
   subtitle: string;
   Price: string;
+  Post?: boolean;
+  forSale?: boolean;
   Country: string;
   onStarPress: () => void;
   onBookmarkPress: () => void;

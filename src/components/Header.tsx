@@ -28,8 +28,8 @@ const Header: React.FC<HeaderProps> = ({ isBack = true }) => {
       <View style={styles.iconsRow}>
         <TouchableOpacity>
           <Icons
-            family={isBack ? "Fontisto" : "Feather"}
-            name={isBack ? "share-a" : "bookmark"}
+            family={isBack ? "Ionicons" : "Feather"}
+            name={isBack ? "share-social" : "bookmark"}
             size={24}
           />
         </TouchableOpacity>

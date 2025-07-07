@@ -24,9 +24,9 @@ const filterOptions = [
 ];
 
 type FilterModalProps = {
-  isVisible: boolean;
-  onDisable: () => void;
-  onPress: () => void;
+  isVisible?: boolean;
+  onDisable?: () => void;
+  onPress?: () => void;
   loading?: boolean;
 };
 
@@ -34,7 +34,12 @@ type DropdownValues = {
   [key: string]: string;
 };
 
-const FilterModal = ({ isVisible, onDisable, onPress, loading }) => {
+const FilterModal: React.FC<FilterModalProps> = ({
+  isVisible,
+  onDisable,
+  onPress,
+  loading,
+}) => {
   const [selectedSort, setSelectedSort] = useState<string>(sortOptions[0]);
   const [dropdownValues, setDropdownValues] = useState<DropdownValues>({});
   const [vintage, setVintage] = useState(false);
@@ -67,7 +72,7 @@ const FilterModal = ({ isVisible, onDisable, onPress, loading }) => {
           marginBottom={25}
         />
 
-        <ScrollView showsVerticalScrollIndicator={false} >
+        <ScrollView showsVerticalScrollIndicator={false}>
           <CustomText
             label="Sort by"
             fontFamily={fonts.bold}
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
     paddingTop: 35,
     width: "90%",
     alignSelf: "center",
-    height:"95%"
+    height: "95%",
   },
   headerRow: {
     flexDirection: "row",

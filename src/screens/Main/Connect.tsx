@@ -7,7 +7,6 @@ import ConnectCard from "../../components/Connect/ConnectCard";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-// If you have a defined navigation type, replace `any` below with your own
 type RootStackParamList = {
   UserProfile: undefined;
 };
@@ -21,43 +20,37 @@ const Connect: React.FC = () => {
       id: "1",
       name: "Ali Khan",
       brandName: "BrandX",
-      followers: 400,
-      imageUrl: "", // add valid URL if needed
+      followers: "400 Mio. Follower • 800 Items",
     },
     {
       id: "2",
       name: "Sara Ali",
       brandName: "BrandY",
-      followers: 400,
-      imageUrl: "",
+      followers: "400 Mio. Follower • 800 Items",
     },
     {
       id: "3",
       name: "John Doe",
       brandName: "BrandZ",
-      followers: 400,
-      imageUrl: "",
+      followers: "400 Mio. Follower • 800 Items",
     },
     {
       id: "4",
       name: "Amna Sheikh",
       brandName: "BrandA",
-      followers: 400,
-      imageUrl: "",
+      followers: "400 Mio. Follower • 800 Items",
     },
     {
       id: "5",
       name: "Rizwan Ahmed",
       brandName: "BrandB",
-      followers: 400,
-      imageUrl: "",
+      followers: "400 Mio. Follower • 800 Items",
     },
     {
       id: "6",
       name: "Hina Mir",
       brandName: "BrandC",
-      followers: 400,
-      imageUrl: "",
+      followers: "400 Mio. Follower • 800 Items",
     },
   ];
 
@@ -77,7 +70,6 @@ const Connect: React.FC = () => {
           name={item.name}
           brandName={item.brandName}
           followers={item.followers}
-          imageUrl={item.imageUrl}
           onCardPress={() => navigation.navigate("UserProfile")}
         />
       ))}
