@@ -11,7 +11,7 @@ const Explore = () => {
   return (
     <ScreenWrapper paddingHorizontal={0.1} scrollEnabled>
       <Header />
-      <FilterButtons />
+      <FilterButtons paddingLeft={10} />
       <Post />
       <FlatList
         horizontal

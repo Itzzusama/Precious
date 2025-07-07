@@ -8,7 +8,7 @@ import RootNavigation from './navigation';
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    // <GestureHandlerRootView style={{ flex: 1 }}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>
@@ -16,7 +16,7 @@ const App = () => {
           </NavigationContainer>
         </PersistGate>
       </Provider>
-    </GestureHandlerRootView>
+    // </GestureHandlerRootView>
   );
 };
 

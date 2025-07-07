@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import fonts from "../../assets/fonts";
 import { Colors } from "../../config/colors";
 import CustomText from "../CustomText";
@@ -27,6 +23,8 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
     { id: "best_match", label: "Best match" },
   ],
   onSelectionChange,
+  paddingLeft,
+  paddingRight,
   initialSelected = "all",
 }) => {
   const [selectedId, setSelectedId] = useState<string>(initialSelected);
@@ -40,7 +38,10 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.container}
+      contentContainerStyle={[
+        styles.container,
+        { paddingRight: paddingRight || 10, paddingLeft: paddingLeft },
+      ]}
     >
       {options.map((option) => (
         <TouchableOpacity
@@ -66,7 +67,6 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    paddingHorizontal: 16,
     paddingVertical: 8,
     gap: 12,
     borderBottomWidth: 1,

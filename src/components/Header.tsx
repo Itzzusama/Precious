@@ -3,16 +3,24 @@ import { Images } from "../assets/images";
 import Icons from "./Icons";
 import ImageFast from "./ImageFast";
 import SearchBar from "./SearchBar";
+import { useNavigation } from "@react-navigation/native";
 
 interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({}) => {
+const Header: React.FC<HeaderProps> = ({ isBack }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
-      <ImageFast source={Images.user} style={styles.logo} />
+      {isBack ? (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icons name="chevron-back" family="Ionicons" size={26} />
+        </TouchableOpacity>
+      ) : (
+        <ImageFast source={Images.user} style={styles.logo} />
+      )}
       <SearchBar
         placeHolder="Item, User, brand"
-        containerStyle={{ width: "65%" }}
+        containerStyle={{ width: isBack ? "70%" : "65%" }}
       />
       <View style={styles.iconsRow}>
         <TouchableOpacity>

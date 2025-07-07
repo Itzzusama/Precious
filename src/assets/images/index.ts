@@ -3,6 +3,7 @@ export const Images = {
   inspiration: require("./inspiration.png"),
   profile: require("./profile.png"),
   connect: require("./connect.png"),
+  model: require("./model.png"),
 
   //auth
   appLogo: require("./Logo.png"),
