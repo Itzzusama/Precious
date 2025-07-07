@@ -52,6 +52,7 @@ const ProfileBottomSheet: React.FC<FilterModalProps> = ({
       isVisible={isVisible}
       onDisable={onDisable}
       isChange
+      
     >
       <View style={[styles.mainContainer]}>
         <View
@@ -92,8 +93,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     padding: 25,
     backgroundColor: Colors.WHITE,
-    borderTopRightRadius: 24,
-    borderTopLeftRadius: 24,
+    borderRadius: 24,
     alignItems: "center",
     paddingTop: 35,
     width: "94%",

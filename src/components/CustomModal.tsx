@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     justifyContent: "flex-end",
-    // alignItems: "center",
+    alignItems: "center",
   },
   container: {
     width: "100%",
