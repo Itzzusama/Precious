@@ -7,6 +7,7 @@ import { Colors } from "../../config/colors";
 import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 import ProductGridCard from "../../components/Collection/ProductGridCard";
+import ProductListCard from "../../components/Collection/ProducListCard";
 
 const items = [
   {
@@ -61,6 +62,7 @@ const items = [
 
 const MyCollection = () => {
   const [tab, setTab] = useState("Items • 57");
+  const [gridView, setGridView] = useState(true);
   return (
     <ScreenWrapper
       headerUnScrollable={() => <Header isBack={false} />}
@@ -79,26 +81,36 @@ const MyCollection = () => {
           setTab={setTab}
           tabNames={["Items • 57", "Wishlist"]}
         />
-        <View style={styles.row1}>
+        <View style={[styles.row1, gridView && styles.custom]}>
           <TouchableOpacity style={styles.row}>
             <Icons family="Feather" name="filter" size={18} />
             <CustomText label="FILTER" fontFamily={fonts.semiBold} />
           </TouchableOpacity>
-          <View style={styles.row}>
+          <TouchableOpacity
+            style={styles.row}
+            onPress={() => setGridView(!gridView)}
+          >
             <CustomText label="SORT BY" fontFamily={fonts.semiBold} />
             <Icons
               family="MaterialCommunityIcons"
               name="view-grid-outline"
               size={18}
             />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 
       <FlatList
         data={items}
-        numColumns={2}
-        renderItem={({ item }) => <ProductGridCard item={item} />}
+        key={gridView ? "grid" : "list"}
+        {...(gridView ? { numColumns: 2 } : {})}
+        renderItem={({ item }) =>
+          gridView ? (
+            <ProductGridCard item={item} />
+          ) : (
+            <ProductListCard item={item} />
+          )
+        }
       />
     </ScreenWrapper>
   );
@@ -117,6 +129,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginTop: 8,
+    borderBottomWidth: 1,
+    paddingBottom: 15,
+    borderBottomColor: "#D1D1D6",
+  },
+  custom: {
+    paddingBottom: 0,
+    borderBottomWidth: 0,
     marginBottom: 15,
   },
 });
