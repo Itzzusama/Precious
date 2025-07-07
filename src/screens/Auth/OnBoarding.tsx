@@ -46,7 +46,9 @@ const OnBoarding: React.FC = () => {
           width={"47%"}
           borderRadius={2}
           borderWidth={1}
+          backgroundColor="transparent"
           borderColor="black"
+          color="black"
           onPress={() => navigation.navigate("Login")}
         />
       </View>

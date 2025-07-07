@@ -17,11 +17,13 @@ import fonts from "../../assets/fonts";
 import { Colors } from "../../config/colors";
 
 import ShoppingCard from "../../components/Connect/ShoppingCard";
+import FilterModal from "../../Modals/FilterModal";
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState<"items" | "forSale" | "posts">(
     "items"
   );
+  const [filterModal, setFilterModal] = useState(false);
   const handleTabPress = (tab: "items" | "forSale" | "posts") => {
     setActiveTab(tab);
   };
@@ -236,7 +238,10 @@ const UserProfile = () => {
       </View>
       {/* Filter/Sort Row */}
       <View style={styles.filterSortRow}>
-        <TouchableOpacity style={styles.filterRowLeft}>
+        <TouchableOpacity
+          style={styles.filterRowLeft}
+          onPress={() => setFilterModal(true)}
+        >
           <Icons
             family="Feather"
             name="filter"
@@ -286,6 +291,11 @@ const UserProfile = () => {
         numColumns={activeTab === "posts" ? 3 : 2}
         key={activeTab}
         showsVerticalScrollIndicator={false}
+      />
+
+      <FilterModal
+        isVisible={filterModal}
+        onDisable={() => setFilterModal(false)}
       />
     </ScreenWrapper>
   );

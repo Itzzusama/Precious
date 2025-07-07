@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ImageStyle, ViewStyle, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageStyle,
+  ViewStyle,
+  TouchableOpacity,
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
@@ -89,22 +95,22 @@ const Login: React.FC = () => {
           (key) => errors[key as keyof typeof errors] !== ""
         )}
       />
-      
 
       <CustomText label="or" alignSelf="center" marginTop={30} />
 
-      <View style={[styles.row,{justifyContent:'space-evenly', marginTop:30}]}>
-        <TouchableOpacity>
+      <View
+        style={[styles.row, { justifyContent: "space-evenly", marginTop: 30 }]}
+      >
+        <TouchableOpacity style={styles.logoOutline}>
           <ImageFast source={Images.apple} style={styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.logoOutline}>
           <ImageFast source={Images.google} style={styles.logo} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.logoOutline}>
           <ImageFast source={Images.facebook} style={styles.logo} />
         </TouchableOpacity>
       </View>
-
 
       <CustomText
         label={`Forgot user name or password or with which platform you signed in?\nWe can help You`}
@@ -141,12 +147,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 80,
   } as ImageStyle,
-  logo: {
-    height: 60,
-    width: 60,
-    padding: 14,
+  logoOutline: {
+    padding: 10,
     backgroundColor: "#B29981",
     borderRadius: 99,
+  } as ImageStyle,
+  logo: {
+    height: 40,
+    width: 40,
+    padding: 14,
   } as ImageStyle,
   line: {
     height: 50,
