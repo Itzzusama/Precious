@@ -4,10 +4,13 @@ import Icons from "./Icons";
 import ImageFast from "./ImageFast";
 import SearchBar from "./SearchBar";
 import { useNavigation } from "@react-navigation/native";
+import { Colors } from "../config/colors";
 
-interface HeaderProps {}
+interface HeaderProps {
+  isBack?: Boolean;
+}
 
-const Header: React.FC<HeaderProps> = ({ isBack }) => {
+const Header: React.FC<HeaderProps> = ({ isBack = true }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 10,
     marginTop: StatusBar.currentHeight,
+    backgroundColor: Colors.WHITE,
   },
   iconsRow: {
     flexDirection: "row",

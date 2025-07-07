@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import {
+  ScrollView,
+  ScrollViewProps,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import fonts from "../../assets/fonts";
 import { Colors } from "../../config/colors";
 import CustomText from "../CustomText";
@@ -13,6 +18,8 @@ interface FilterButtonsProps {
   options?: FilterOption[];
   onSelectionChange?: (selectedId: string) => void;
   initialSelected?: string;
+  paddingRight?: number;
+  paddingLeft?: number;
 }
 
 const FilterButtons: React.FC<FilterButtonsProps> = ({
@@ -23,8 +30,8 @@ const FilterButtons: React.FC<FilterButtonsProps> = ({
     { id: "best_match", label: "Best match" },
   ],
   onSelectionChange,
-  paddingLeft,
-  paddingRight,
+  paddingLeft = 0,
+  paddingRight = 0,
   initialSelected = "all",
 }) => {
   const [selectedId, setSelectedId] = useState<string>(initialSelected);
