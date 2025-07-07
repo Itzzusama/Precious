@@ -13,7 +13,8 @@ type RootStackParamList = {
 };
 
 const Connect: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const data = [
     {

@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: Colors.LIGHT_GREY,
+    backgroundColor: Colors.GREY6,
     borderRadius: 30,
     overflow: "hidden",
   },
