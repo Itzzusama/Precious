@@ -8,6 +8,7 @@ import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 import ProductGridCard from "../../components/Collection/ProductGridCard";
 import ProductListCard from "../../components/Collection/ProducListCard";
+import FilterModal from "../../Modals/FilterModal";
 
 const items = [
   {
@@ -63,6 +64,8 @@ const items = [
 const MyCollection = () => {
   const [tab, setTab] = useState("Items • 57");
   const [gridView, setGridView] = useState(true);
+  const [filterModal, setFilterModal] = useState(false);
+
   return (
     <ScreenWrapper
       headerUnScrollable={() => <Header isBack={false} />}
@@ -82,7 +85,10 @@ const MyCollection = () => {
           tabNames={["Items • 57", "Wishlist"]}
         />
         <View style={[styles.row1, gridView && styles.custom]}>
-          <TouchableOpacity style={styles.row}>
+          <TouchableOpacity
+            style={styles.row}
+            onPress={() => setFilterModal(true)}
+          >
             <Icons family="Feather" name="filter" size={18} />
             <CustomText label="FILTER" fontFamily={fonts.semiBold} />
           </TouchableOpacity>
@@ -111,6 +117,10 @@ const MyCollection = () => {
             <ProductListCard item={item} />
           )
         }
+      />
+      <FilterModal
+        isVisible={filterModal}
+        onDisable={() => setFilterModal(false)}
       />
     </ScreenWrapper>
   );

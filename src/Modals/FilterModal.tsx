@@ -66,6 +66,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
       backdropOpacity={0.8}
       isVisible={isVisible}
       onDisable={onDisable}
+      isChange
     >
       <View style={[styles.mainContainer]}>
         <CustomText
@@ -231,7 +232,7 @@ const styles = StyleSheet.create({
     paddingTop: 35,
     width: "94%",
     alignSelf: "center",
-    height: "96%",
+    height: "94%",
   },
   headerRow: {
     flexDirection: "row",
