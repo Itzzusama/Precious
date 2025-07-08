@@ -3,12 +3,17 @@ import React from "react";
 import TabStack from "./TabStack";
 import MyCollection from "../screens/Main/MyCollection";
 import UserProfile from "../screens/Main/UserProfile";
+import PersonalInformation from "../screens/Main/PersonalInformation";
+import ProfileSetting from "../screens/Main/ProfileSetting";
 
 // Define stack param list
 type MainStackParamList = {
   PolicyPage: undefined;
   TabStack: undefined;
   MyCollection: undefined;
+  UserProfile: undefined;
+  ProfileSetting: undefined;
+  PersonalInformation: undefined;
 };
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
@@ -24,6 +29,8 @@ const MainStack: React.FC = () => {
       <Stack.Screen name="TabStack" component={TabStack} />
       <Stack.Screen name="MyCollection" component={MyCollection} />
       <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen name="ProfileSetting" component={ProfileSetting} />
+      <Stack.Screen name="PersonalInformation" component={PersonalInformation} />
     </Stack.Navigator>
   );
 };

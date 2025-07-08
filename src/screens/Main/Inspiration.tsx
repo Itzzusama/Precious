@@ -8,67 +8,98 @@ import { Images } from "../../assets/images";
 import ProductGridCard from "../../components/Collection/ProductGridCard";
 import ProductListCard from "../../components/Collection/ProducListCard";
 import FilterModal from "../../Modals/FilterModal";
+import ImageFast from "../../components/ImageFast";
+import TrendCard from "../../components/Inspiration/TrendCard";
+import BuySellCard from "../../components/Inspiration/BuySellCard";
+import EventCard from "../../components/Inspiration/EventCard";
 
-const items = [
+
+
+const events = [
   {
-    image: Images.product,
-    title: "Patek Philippe",
-    subtitle: "Calatrava yellow gold…",
-    price: "$1500.00",
-    newPrice: "$1700.00",
-    increment: "10%",
+    image: Images.event1,
+    logo: Images.eventLogo,
+    date: "Thu, 01.MAI",
+    time: "9:00PM",
+    title: "FLAGSHIP OPENING",
+    subtitle: "MADRID",
+    badge: "GUCCI",
   },
   {
-    image: Images.product,
-    title: "GUCCI Shoes",
-    subtitle: "Stilettos, Leather, red…",
-    price: "$500.00",
-    newPrice: "$800.00",
-    increment: "10%",
-  },
-  {
-    image: Images.product,
-    title: "Patek Philippe",
-    subtitle: "Calatrava yellow gold…",
-    price: "$2500.00",
-    newPrice: "$1200.00",
-    decrement: "55%",
-  },
-  {
-    image: Images.product,
-    title: "GUCCI Shoes",
-    subtitle: "Stilettos, Leather, red…",
-    price: "$900.00",
-    newPrice: "$1100.00",
-    increment: "10%",
-  },
-  {
-    image: Images.product,
-    title: "Patek Philippe",
-    subtitle: "Calatrava yellow gold…",
-    price: "$200.00",
-    newPrice: "$300.00",
-    increment: "10%",
-  },
-  {
-    image: Images.product,
-    title: "GUCCI Shoes",
-    subtitle: "Stilettos, Leather, red…",
-    price: "$1700.00",
-    newPrice: "$1300.00",
-    decrement: "15%",
+    image: Images.event2,
+    logo: Images.eventLogo,
+    date: "Thu, 01.MAI",
+    time: "10:00PM",
+    title: "WELCOME THE SEASON MEMBER MIXER",
+    subtitle: "SALON MARMOT PARIS",
+    badge: "BEST OF EDITION",
   },
 ];
 
+const buyingSelling = [
+  {
+    image: Images.product,
+    logo: Images.profile,
+    date: "03.June · 9:00PM",
+    title: "Online Auction",
+    badge: "XR",
+  },
+  {
+    image: Images.product,
+    logo: Images.profile,
+    date: "18.Mai · 4:00PM",
+    title: "Art Gallery East",
+    badge: "H",
+  },
+  {
+    image: Images.product,
+    logo: Images.profile,
+    date: "23.APRIL · 4:00PM",
+    title: "CELINE Collection",
+    badge: "CELINE",
+  },
+];
+
+const trends = [
+  {
+    image: Images.trend1,
+    date: "12.April | NEWS",
+    title: "New Edition John Lennon's Patek Philipp...",
+  },
+  {
+    image: Images.trend2,
+    date: "09.April | VINTAGE",
+    title: "THE OMEGA 'FI...",
+  },
+];
+
+type EventItem = {
+  image: number;
+  logo?: number;
+  date: string;
+  time?: string;
+  title: string;
+  subtitle?: string;
+  badge?: string;
+};
+
+type TrendItem = {
+  image: number;
+  date: string;
+  title: string;
+};
+
+// Card components
+
 const Inspiration = () => {
-  const [tab, setTab] = useState("Items • 57");
+  const [tab, setTab] = useState("Recommended for You");
   const [gridView, setGridView] = useState(true);
   const [filterModal, setFilterModal] = useState(false);
 
   return (
     <ScreenWrapper
       headerUnScrollable={() => <Header isBack={false} />}
-      paddingHorizontal={0.1}
+      paddingHorizontal={10}
     >
       <View style={{ paddingHorizontal: 12 }}>
         <CustomText
@@ -81,45 +112,69 @@ const Inspiration = () => {
         <TopTab
           tab={tab}
           setTab={setTab}
-          tabNames={["Items • 57", "Wishlist"]}
+          tabNames={["Recommended for You", "All"]}
         />
-        <View style={[styles.row1, gridView && styles.custom]}>
-          <TouchableOpacity
-            style={styles.row}
-            onPress={() => setFilterModal(true)}
-          >
-            <Icons family="Feather" name="filter" size={18} />
-            <CustomText label="FILTER" fontFamily={fonts.semiBold} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.row}
-            onPress={() => setGridView(!gridView)}
-          >
-            <CustomText label="SORT BY" fontFamily={fonts.semiBold} />
-            <Icons
-              family="MaterialCommunityIcons"
-              name="view-grid-outline"
-              size={18}
-            />
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity
+          style={[styles.row, { alignSelf: "flex-end" }]}
+          onPress={() => setGridView(!gridView)}
+        >
+          <CustomText label="SORT BY" fontFamily={fonts.semiBold} />
+          <Icons
+            family="MaterialCommunityIcons"
+            name="view-grid-outline"
+            size={18}
+          />
+        </TouchableOpacity>
       </View>
 
-      <FlatList
-        data={items}
-        key={gridView ? "grid" : "list"}
-        {...(gridView ? { numColumns: 2 } : {})}
-        renderItem={({ item }) =>
-          gridView ? (
-            <ProductGridCard item={item} />
-          ) : (
-            <ProductListCard item={item} />
-          )
-        }
+      {/* EVENTS SECTION */}
+      <CustomText
+        label="EVENTS"
+        fontFamily={fonts.bold}
+        fontSize={15}
+        marginTop={18}
+        marginBottom={8}
       />
-      <FilterModal
-        isVisible={filterModal}
-        onDisable={() => setFilterModal(false)}
+      <FlatList
+        data={events}
+        renderItem={({ item }) => <EventCard item={item} />}
+        keyExtractor={(_, idx) => `event-${idx}`}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingLeft: 12, paddingRight: 4 }}
+      />
+      {/* BUYING & SELLING SECTION */}
+      <CustomText
+        label="BUYING & SELLING"
+        fontFamily={fonts.bold}
+        fontSize={15}
+        marginTop={18}
+        marginBottom={8}
+      />
+      <FlatList
+        data={buyingSelling}
+        renderItem={({ item }) => <BuySellCard item={item} />}
+        keyExtractor={(_, idx) => `buy-${idx}`}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingLeft: 12, paddingRight: 4 }}
+      />
+      {/* RECENT TRENDS SECTION */}
+      <CustomText
+        label="RECENT TRENDS"
+        fontFamily={fonts.bold}
+        fontSize={15}
+        marginTop={18}
+        marginBottom={8}
+      />
+      <FlatList
+        data={trends}
+        renderItem={({ item }) => <TrendCard item={item} />}
+        keyExtractor={(_, idx) => `trend-${idx}`}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingLeft: 12, paddingRight: 4 }}
       />
     </ScreenWrapper>
   );

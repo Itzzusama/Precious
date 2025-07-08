@@ -96,9 +96,9 @@ const CustomInput: React.FC<CustomInputProps> = ({
       {withLabel && (
         <CustomText
           label={withLabel}
-          marginBottom={5}
-          fontSize={14}
+          fontSize={11}
           color={"#717579"}
+          marginBottom={-12}
         />
       )}
       <View

@@ -6,13 +6,22 @@ import ImageFast from "./ImageFast";
 import SearchBar from "./SearchBar";
 import { useNavigation } from "@react-navigation/native";
 import { Colors } from "../config/colors";
+import CustomText from "./CustomText";
+import fonts from "../assets/fonts";
 
 interface HeaderProps {
   isBack?: Boolean;
+  name?: string;
+  profile?: Boolean;
   onMorePress?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ isBack = true,onMorePress }) => {
+const Header: React.FC<HeaderProps> = ({
+  isBack = true,
+  onMorePress,
+  profile,
+  name,
+}) => {
   const navigation = useNavigation();
 
   const insets = useSafeAreaInsets();
@@ -25,10 +34,15 @@ const Header: React.FC<HeaderProps> = ({ isBack = true,onMorePress }) => {
       ) : (
         <ImageFast source={Images.user} style={styles.logo} />
       )}
-      <SearchBar
-        placeHolder="Item, User, brand"
-        containerStyle={{ width: isBack ? "70%" : "65%" }}
-      />
+
+      {profile ? (
+        <CustomText label={name} fontSize={18} fontFamily={fonts.semiBold} />
+      ) : (
+        <SearchBar
+          placeHolder="Item, User, brand"
+          containerStyle={{ width: isBack ? "70%" : "65%" }}
+        />
+      )}
       <View style={styles.iconsRow}>
         <TouchableOpacity>
           <Icons
