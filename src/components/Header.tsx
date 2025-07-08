@@ -1,5 +1,6 @@
 import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Images } from "../assets/images";
 import Icons from "./Icons";
 import ImageFast from "./ImageFast";
@@ -8,6 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Colors } from "../config/colors";
 import CustomText from "./CustomText";
 import fonts from "../assets/fonts";
+
+import { RootStackParamList } from "../navigation/types";
 
 interface HeaderProps {
   isBack?: Boolean;
@@ -23,6 +26,12 @@ const Header: React.FC<HeaderProps> = ({
   name,
 }) => {
   const navigation = useNavigation();
+
+  interface HeaderProps {
+    isBack?: boolean;
+
+    onMorePress?: () => void;
+  }
 
   const insets = useSafeAreaInsets();
   return (
@@ -51,11 +60,15 @@ const Header: React.FC<HeaderProps> = ({
             size={24}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={onMorePress}>
+        <TouchableOpacity
+          onPress={() =>
+            isBack ? onMorePress?.() : navigation.navigate("ChatList")
+          }
+        >
           <Icons
+            size={24}
             family="Feather"
             name={isBack ? "more-horizontal" : "mail"}
-            size={24}
           />
         </TouchableOpacity>
       </View>

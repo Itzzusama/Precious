@@ -1,23 +1,21 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
   GestureResponderEvent,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Images } from "../../assets/images";
-import CustomText from "../CustomText";
-import CustomButton from "../CustomButton";
-import { Colors } from "../../config/colors";
 import fonts from "../../assets/fonts";
+import { Images } from "../../assets/images";
+import CustomButton from "../CustomButton";
+import CustomText from "../CustomText";
 
 interface Props {
   name: string;
   brandName: string;
-  followers: number;
-  imageUrl: string;
+  followers: number | string;
+  imageUrl?: string;
   onCardPress?: (event: GestureResponderEvent) => void;
 }
 
@@ -41,7 +39,11 @@ const ConnectCard: React.FC<Props> = ({
 
       {/* Middle: Text Info */}
       <View style={styles.infoContainer}>
-        <CustomText textStyle={styles.name} label={name || "susann35"} fontFamily={fonts.bold}/>
+        <CustomText
+          textStyle={styles.name}
+          label={name || "susann35"}
+          fontFamily={fonts.bold}
+        />
         <CustomText textStyle={styles.brand}>
           {brandName || "Fashionbrand"}
         </CustomText>

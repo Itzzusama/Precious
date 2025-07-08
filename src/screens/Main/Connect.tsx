@@ -1,15 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { ScreenWrapper } from "../../components";
+import ConnectCard from "../../components/Connect/ConnectCard";
 import Header from "../../components/Header";
 import FilterButtons from "../../components/explore/FilterButtons";
-import ConnectCard from "../../components/Connect/ConnectCard";
-import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-
-type RootStackParamList = {
-  UserProfile: undefined;
-};
+import { RootStackParamList } from "../../navigation/types";
 
 const Connect: React.FC = () => {
   const navigation =

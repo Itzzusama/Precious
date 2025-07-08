@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 import { Colors } from "../../config/colors";
@@ -11,7 +11,9 @@ type cardProps = {
   item: any;
 };
 
-const ProductListCard: React.FC<cardProps> = ({ item }) => {
+const WishListCard: React.FC<cardProps> = ({ item }) => {
+  const [selected, setSelected] = useState(true);
+
   return (
     <View style={styles.cardContainer}>
       <ImageFast
@@ -27,51 +29,40 @@ const ProductListCard: React.FC<cardProps> = ({ item }) => {
             label={item?.title}
             fontFamily={fonts.medium}
           />
-          <ImageFast
-            source={Images.badge}
-            style={styles.badge}
-            resizeMode="contain"
-          />
+          <View style={styles.row}>
+            <ImageFast
+              source={Images.badge}
+              style={styles.badge}
+              resizeMode="contain"
+            />
+            <TouchableOpacity onPress={() => setSelected(!selected)}>
+              <Icons
+                size={24}
+                family={"Ionicons"}
+                name={selected ? "bookmark" : "bookmark-outline"}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <CustomText
           fontSize={14}
+          marginBottom={4}
           numberOfLines={1}
-          marginBottom={8}
           label={item?.subtitle}
         />
-        <View style={styles.row1}>
-          <CustomText label="Since" color={Colors.GREY2} />
-          <CustomText label={"03.2023"} fontFamily={fonts.semiBold} />
-        </View>
-        <View style={styles.row1}>
-          <CustomText label="Price" color={Colors.GREY2} />
-          <CustomText label={item?.price} fontFamily={fonts.semiBold} />
-        </View>
-        <View style={styles.row1}>
-          <View style={styles.row}>
-            <CustomText label="New Price" color={Colors.GREY2} />
-            <View style={styles.row}>
-              <Icons
-                size={18}
-                family="Feather"
-                name={item?.increment ? "arrow-up" : "arrow-down"}
-                color={item?.increment ? Colors.GREEN : Colors.RED}
-              />
-              <CustomText
-                fontFamily={fonts.medium}
-                label={item?.increment || item?.decrement}
-                color={item?.increment ? Colors.GREEN : Colors.RED}
-              />
-            </View>
-          </View>
-          <CustomText label={item?.price} fontFamily={fonts.semiBold} />
-        </View>
+
+        <CustomText
+          fontSize={16}
+          label={item?.price}
+          fontFamily={fonts.semiBold}
+        />
+        <CustomText label="1 available for sale" color={Colors.RED} />
       </View>
     </View>
   );
 };
 
-export default ProductListCard;
+export default WishListCard;
 
 const styles = StyleSheet.create({
   cardContainer: {

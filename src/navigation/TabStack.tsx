@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   tabBarStyle: {
     height: 85,
     backgroundColor: Colors.WHITE,
-    paddingTop: 8,
+    paddingTop: 12,
   },
   labelStyle: {
     fontFamily: fonts.medium,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     backgroundColor: Colors.BLACK,
     borderRadius: 50,
-    marginTop: 10,
+    marginTop: 15,
   },
   tabIcon: {
     width: 30,

@@ -14,9 +14,14 @@ type MainStackParamList = {
   UserProfile: undefined;
   ProfileSetting: undefined;
   PersonalInformation: undefined;
+  ChatList: undefined;
+  ChatScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
+import ChatList from "../screens/Main/ChatList";
+import { RootStackParamList } from "./types";
+import ChatScreen from "../screens/Main/ChatScreen";
 
 const MainStack: React.FC = () => {
   return (
@@ -30,7 +35,12 @@ const MainStack: React.FC = () => {
       <Stack.Screen name="MyCollection" component={MyCollection} />
       <Stack.Screen name="UserProfile" component={UserProfile} />
       <Stack.Screen name="ProfileSetting" component={ProfileSetting} />
-      <Stack.Screen name="PersonalInformation" component={PersonalInformation} />
+      <Stack.Screen
+        name="PersonalInformation"
+        component={PersonalInformation}
+      />
+      <Stack.Screen name="ChatList" component={ChatList} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
     </Stack.Navigator>
   );
 };

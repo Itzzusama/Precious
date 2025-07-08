@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
   mainContainer: {
     padding: 25,
     backgroundColor: Colors.WHITE,
-    borderRadius: 24,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
     alignItems: "center",
     paddingTop: 35,
     width: "94%",
