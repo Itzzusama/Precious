@@ -66,7 +66,6 @@ const FilterModal: React.FC<FilterModalProps> = ({
       backdropOpacity={0.8}
       isVisible={isVisible}
       onDisable={onDisable}
-      isChange
     >
       <View style={[styles.mainContainer]}>
         <CustomText

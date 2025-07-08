@@ -9,6 +9,8 @@ import { Images } from "../../assets/images";
 import ProductGridCard from "../../components/Collection/ProductGridCard";
 import ProductListCard from "../../components/Collection/ProducListCard";
 import FilterModal from "../../Modals/FilterModal";
+import WishGridCard from "../../components/Collection/WishGridCard";
+import WishListCard from "../../components/Collection/WishListCard";
 
 const items = [
   {
@@ -112,7 +114,13 @@ const MyCollection = () => {
         {...(gridView ? { numColumns: 2 } : {})}
         renderItem={({ item }) =>
           gridView ? (
-            <ProductGridCard item={item} />
+            tab === "Wishlist" ? (
+              <WishGridCard item={item} />
+            ) : (
+              <ProductGridCard item={item} />
+            )
+          ) : tab === "Wishlist" ? (
+            <WishListCard item={item} />
           ) : (
             <ProductListCard item={item} />
           )

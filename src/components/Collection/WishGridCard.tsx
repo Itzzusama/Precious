@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 import { Colors } from "../../config/colors";
@@ -11,7 +11,8 @@ type cardProps = {
   item: any;
 };
 
-const ProductGridCard: React.FC<cardProps> = ({ item }) => {
+const WishGridCard: React.FC<cardProps> = ({ item }) => {
+  const [selected, setSelected] = useState(true);
   return (
     <View style={styles.cardContainer}>
       <View style={styles.cardHeader}>
@@ -20,19 +21,13 @@ const ProductGridCard: React.FC<cardProps> = ({ item }) => {
           style={styles.badge}
           resizeMode="contain"
         />
-        <View style={styles.row}>
+        <TouchableOpacity onPress={() => setSelected(!selected)}>
           <Icons
-            size={18}
-            family="Feather"
-            name={item?.increment ? "arrow-up" : "arrow-down"}
-            color={item?.increment ? Colors.GREEN : Colors.RED}
+            size={24}
+            family={"Ionicons"}
+            name={selected ? "bookmark" : "bookmark-outline"}
           />
-          <CustomText
-            fontFamily={fonts.medium}
-            label={item?.increment || item?.decrement}
-            color={item?.increment ? Colors.GREEN : Colors.RED}
-          />
-        </View>
+        </TouchableOpacity>
       </View>
       <ImageFast
         source={item?.image}
@@ -48,27 +43,26 @@ const ProductGridCard: React.FC<cardProps> = ({ item }) => {
       />
       <CustomText
         fontSize={14}
+        marginBottom={4}
         numberOfLines={1}
-        marginBottom={8}
         label={item?.subtitle}
       />
-      <View style={styles.row1}>
-        <CustomText label="Since" color={Colors.GREY2} />
-        <CustomText label={"03.2023"} fontFamily={fonts.semiBold} />
-      </View>
-      <View style={styles.row1}>
-        <CustomText label="Price" color={Colors.GREY2} />
-        <CustomText label={item?.price} fontFamily={fonts.semiBold} />
-      </View>
-      <View style={styles.row1}>
-        <CustomText label="New Price" color={Colors.GREY2} />
-        <CustomText label={item?.price} fontFamily={fonts.semiBold} />
-      </View>
+
+      <CustomText
+        fontSize={16}
+        label={item?.price}
+        fontFamily={fonts.semiBold}
+      />
+      <CustomText
+        color={Colors.RED}
+        fontFamily={fonts.medium}
+        label="6 available for sale"
+      />
     </View>
   );
 };
 
-export default ProductGridCard;
+export default WishGridCard;
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -92,8 +86,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   badge: {
-    height: 21,
-    width: 24,
+    height: 24,
+    width: 26,
   },
   row: {
     justifyContent: "center",

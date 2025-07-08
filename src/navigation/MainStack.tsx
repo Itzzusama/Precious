@@ -3,15 +3,11 @@ import React from "react";
 import TabStack from "./TabStack";
 import MyCollection from "../screens/Main/MyCollection";
 import UserProfile from "../screens/Main/UserProfile";
+import ChatList from "../screens/Main/ChatList";
+import { RootStackParamList } from "./types";
+import ChatScreen from "../screens/Main/ChatScreen";
 
-// Define stack param list
-type MainStackParamList = {
-  PolicyPage: undefined;
-  TabStack: undefined;
-  MyCollection: undefined;
-};
-
-const Stack = createNativeStackNavigator<MainStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const MainStack: React.FC = () => {
   return (
@@ -24,6 +20,8 @@ const MainStack: React.FC = () => {
       <Stack.Screen name="TabStack" component={TabStack} />
       <Stack.Screen name="MyCollection" component={MyCollection} />
       <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen name="ChatList" component={ChatList} />
+      <Stack.Screen name="ChatScreen" component={ChatScreen} />
     </Stack.Navigator>
   );
 };
