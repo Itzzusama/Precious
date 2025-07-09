@@ -92,7 +92,7 @@ const ItemDropDown: React.FC<CustomDropdownProps> = ({
           label={title || text || value || placeholder}
           color={Colors.BLACK}
           fontFamily={fonts.semiBold}
-          fontSize={18}
+          fontSize={16}
         />
         <Icons
           style={{ color: Colors.PRIMARY, fontSize: 20 }}
@@ -139,7 +139,7 @@ export default ItemDropDown;
 const styles = StyleSheet.create({
   dropdownMainContainer: {
     width: "100%",
-    maxHeight: 200,
+    // maxHeight: 200,
     overflow: "scroll",
     borderWidth: 1,
     backgroundColor: Colors.WHITE,

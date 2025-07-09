@@ -4301,6 +4301,11 @@ getenv@^2.0.0:
   resolved "https://registry.yarnpkg.com/getenv/-/getenv-2.0.0.tgz#b1698c7b0f29588f4577d06c42c73a5b475c69e0"
   integrity sha512-VilgtJj/ALgGY77fiLam5iD336eSWi96Q15JSAG1zi8NRBysm3LXKdGnHb4m5cuyxvOLQQKWpBZAT6ni4FI2iQ==
 
+gifted-charts-core@0.1.64:
+  version "0.1.64"
+  resolved "https://registry.yarnpkg.com/gifted-charts-core/-/gifted-charts-core-0.1.64.tgz#073eac32194e8e1dab3f1411317b1faaf48ee966"
+  integrity sha512-1veZKa8f5XD9ytDNSZ2KG5bIp3GTxzhwBfMmKk+MCr9GTzCIDPOW1u5B7d+pPXPPkQ8qJMJqUr4NiSyiPlAMAw==
+
 github-from-package@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/github-from-package/-/github-from-package-0.0.0.tgz#97fb5d96bfde8973313f20e8288ef9a167fa64ce"
@@ -6523,6 +6528,13 @@ react-native-fast-image@^8.6.3:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
   integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
 
+react-native-gifted-charts@^1.4.62:
+  version "1.4.62"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-charts/-/react-native-gifted-charts-1.4.62.tgz#8ef38670d3d8e0c80b7e5a70ba260ab639e44325"
+  integrity sha512-VvIa6CYrzkMkEdlCaen6//QTsh0wuWRA6m3d2OGxMg2OrwYUMOW9b+rD85qPeELRlcm8c/ZvYtLWSMVaJM2iXQ==
+  dependencies:
+    gifted-charts-core "0.1.64"
+
 react-native-image-crop-picker@^0.50.1:
   version "0.50.1"
   resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.50.1.tgz#db627a378daa7cfc7500a6bc6188510bb2325f5a"
@@ -6545,6 +6557,11 @@ react-native-keyboard-aware-scroll-view@^0.9.5:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-linear-gradient@^2.8.3:
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz#9a116649f86d74747304ee13db325e20b21e564f"
+  integrity sha512-KflAXZcEg54PXkLyflaSZQ3PJp4uC4whM7nT/Uot9m0e/qxFV3p6uor1983D1YOBJbJN7rrWdqIjq0T42jOJyA==
 
 react-native-modal@^14.0.0-rc.1:
   version "14.0.0-rc.1"

@@ -4,12 +4,17 @@ import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
 import { Images } from "../../assets/images";
+import { useNavigation } from "@react-navigation/native";
 
 const Post = ({ onPress }) => {
+  const navigation = useNavigation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("DetailPage")}
+      activeOpacity={0.6}
+    >
       <PostHeader user={{ name: "tom_", avatar: Images.logo }} />
       <PostBody
         images={[Images.post, Images.post, Images.post]}

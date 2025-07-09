@@ -30,7 +30,7 @@ const Explore = () => {
           />
         )}
       />
-      <Post onPress={() => navigation.navigate("DetailPage")} />
+      <Post  />
       <Post />
     </ScreenWrapper>
   );

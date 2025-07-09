@@ -5,11 +5,13 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 import {
   CustomButton,
   CustomText,
+  Icons,
   ImageFast,
   ScreenWrapper,
 } from "../../components";
@@ -20,6 +22,10 @@ import fonts from "../../assets/fonts";
 import ItemDropDown from "../../components/DetailPage/ItemDropDown";
 import { Colors } from "../../config/colors";
 import Header from "../../components/Header";
+import { BarChart } from "react-native-gifted-charts";
+import UserCard from "../../components/DetailPage/UserCard";
+import ProductListCard from "../../components/Collection/ProducListCard";
+import ProductGridCard from "../../components/Collection/ProductGridCard";
 
 const allPictures = [
   Images.product,
@@ -50,6 +56,43 @@ const basicInfo = [
 ];
 const description = `1990 Rolex Datejust men's watch\nModel: 16220\nSerial number: E308864\nThis classic Rolex watch is set in stainless steel.\nCase diameter 36 mm\nSilver dial with baton markers\nStainless steel Oyster bracelet for wrists up to 7.5 inches. Bracelet is tight and in very good condition.\nAutomatic movement`;
 
+const valueHistoryData = [
+  { value: 10000, label: "2012" },
+  { value: 15000, label: "2013" },
+  { value: 25000, label: "2014" },
+  { value: 35000, label: "2015" },
+  { value: 50000, label: "2016" },
+  { value: 70000, label: "2017" },
+  { value: 100000, label: "2018" },
+  { value: 120000, label: "2019" },
+  { value: 140000, label: "2020" },
+  { value: 180000, label: "2021" },
+  { value: 200000, label: "2022" },
+  { value: 220000, label: "2023" },
+  { value: 250000, label: "2024" },
+  { value: 400000, label: "2025" },
+];
+
+const items = [
+  {
+    image: Images.product,
+    title: "Patek Philippe",
+    subtitle: "Calatrava yellow gold…",
+    price: "$1500.00",
+    newPrice: "$1700.00",
+    increment: "10%",
+  },
+  {
+    image: Images.product,
+    title: "GUCCI Shoes",
+    subtitle: "Stilettos, Leather, red…",
+    price: "$500.00",
+    newPrice: "$800.00",
+    increment: "10%",
+  },
+ 
+];
+
 const DetailPage = () => {
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
     pictures: true,
@@ -60,7 +103,7 @@ const DetailPage = () => {
   });
 
   return (
-    <ScreenWrapper translucent paddingHorizontal={0.1}>
+    <ScreenWrapper translucent paddingHorizontal={0.1} paddingBottom={16}>
       {/* <View style={{position: "absolute",zIndex:999, backgroundColor:'transparent'}}>
         <Header />
         </View> */}
@@ -76,6 +119,19 @@ const DetailPage = () => {
           fontSize={17}
           marginBottom={10}
         />
+        <CustomText label="$2493" fontFamily={fonts.semiBold} fontSize={20} />
+        <CustomText
+          label="$5000"
+          color={Colors.RED}
+          textDecorationLine="line-through"
+        />
+        <CustomText
+          label="Delivery within 10 Days"
+          color={Colors.GREY}
+          fontSize={12}
+          marginBottom={14}
+        />
+        <CustomButton title="Make an Offer" />
         {/* All Pictures Section */}
         <ItemDropDown title="All Pictures">
           {openSections.pictures && (
@@ -186,6 +242,70 @@ const DetailPage = () => {
             </View>
           )}
         </ItemDropDown>
+        {/* Value History Section */}
+        <ItemDropDown title="Value History">
+          <View style={{ marginTop: 8, alignItems: "center", width: "100%" }}>
+            <BarChart
+              data={valueHistoryData}
+              barWidth={16}
+              barBorderRadius={4}
+              frontColor="#888"
+              yAxisThickness={1}
+              xAxisThickness={0}
+              yAxisTextStyle={{ color: "#888", fontSize: 11 }}
+              xAxisLabelTextStyle={{
+                color: "#888",
+                fontSize: 11,
+                marginTop: 4,
+              }}
+              yAxisLabelWidth={70}
+              yAxisLabelTexts={[
+                "$0",
+                "$50,000.00",
+                "$100,000.00",
+                "$150,000.00",
+                "$200,000.00",
+                "$250,000.00",
+                "$300,000.00",
+                "$350,000.00",
+                "$400,000.00",
+              ]}
+              maxValue={400000}
+              stepValue={50000}
+              noOfSections={8}
+              spacing={12}
+              hideRules
+              xAxisColor="#fff"
+              yAxisColor="#eee"
+              yAxisTextNumberOfLines={1}
+              showYAxisIndices={false}
+              showFractionalValues
+              xAxisTextNumberOfLines={1}
+              height={220}
+              width={340}
+              initialSpacing={20}
+              disableScroll={false}
+              showVerticalLines={false}
+            />
+          </View>
+        </ItemDropDown>
+
+        <UserCard />
+
+        <View style={styles.infoRow}>
+          <CustomText
+            label="More from this Seller"
+            fontSize={20}
+            fontFamily={fonts.semiBold}
+          />
+          <Icons name="arrow-forward" family="Ionicons" />
+        </View>
+
+        <FlatList
+          data={items}
+          numColumns={2}
+          renderItem={({ item }) => <ProductGridCard item={item} />}
+        />
       </View>
     </ScreenWrapper>
   );
@@ -236,5 +356,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 6,
+  },
+  valueChart: {
+    width: "100%",
+    height: 200,
+    marginTop: 8,
   },
 });
