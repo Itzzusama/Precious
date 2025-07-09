@@ -17,6 +17,7 @@ interface HeaderProps {
   name?: string;
   profile?: Boolean;
   onMorePress?: () => void;
+  backgroundColor?:string
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -24,6 +25,7 @@ const Header: React.FC<HeaderProps> = ({
   onMorePress,
   profile,
   name,
+  backgroundColor,
 }) => {
   const navigation = useNavigation();
 
@@ -35,7 +37,15 @@ const Header: React.FC<HeaderProps> = ({
 
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.mainContainer, { paddingTop: insets.top + 10 }]}>
+    <View
+      style={[
+        styles.mainContainer,
+        {
+          paddingTop: insets.top + 10,
+          backgroundColor: backgroundColor || Colors.WHITE,
+        },
+      ]}
+    >
       {isBack ? (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icons name="chevron-back" family="Ionicons" size={26} />
@@ -86,7 +96,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: "space-between",
     paddingBottom: 10,
-    backgroundColor: Colors.WHITE,
   },
   iconsRow: {
     flexDirection: "row",

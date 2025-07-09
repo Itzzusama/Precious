@@ -85,7 +85,7 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
           refreshControl={refreshControl}
           style={[
             styles.container,
-            { backgroundColor, paddingHorizontal: paddingHorizontal || 25 },
+            { backgroundColor, paddingHorizontal: paddingHorizontal || 16 },
           ]}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}

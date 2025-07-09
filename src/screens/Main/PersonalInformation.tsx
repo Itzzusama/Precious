@@ -6,6 +6,7 @@ import CustomText from "../../components/CustomText";
 import Header from "../../components/Header";
 import Icons from "../../components/Icons";
 import { Colors } from "../../config/colors";
+import { useNavigation } from "@react-navigation/native";
 
 interface UserInfo {
   userName: string;
@@ -28,6 +29,7 @@ interface InputField {
 }
 
 const PersonalInformation: React.FC = () => {
+  const navigation = useNavigation();
   const init: UserInfo = {
     userName: "Lucy Watson",
     email: "lucywatson@gmail.com",
@@ -94,6 +96,22 @@ const PersonalInformation: React.FC = () => {
       <TouchableOpacity style={[styles.row, { marginTop: 40 }]}>
         <CustomText
           label="Change Password"
+          fontSize={16}
+          fontFamily={fonts.bold}
+        />
+        <Icons
+          family="Feather"
+          name="chevron-right"
+          size={22}
+          color={Colors.BLACK}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.row, { marginTop: 20 }]}
+        onPress={() => navigation.navigate("MyAddress")}
+      >
+        <CustomText
+          label="Change Address"
           fontSize={16}
           fontFamily={fonts.bold}
         />

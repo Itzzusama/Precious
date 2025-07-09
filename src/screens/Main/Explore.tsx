@@ -6,8 +6,10 @@ import FilterButtons from "../../components/explore/FilterButtons";
 import Post from "../../components/explore/Post";
 import ProductCard from "../../components/explore/ProductCard";
 import Header from "../../components/Header";
+import { useNavigation } from "@react-navigation/native";
 
 const Explore = () => {
+  const navigation = useNavigation();
   return (
     <ScreenWrapper paddingHorizontal={0.1}>
       <Header isBack={false} />
@@ -28,7 +30,7 @@ const Explore = () => {
           />
         )}
       />
-      <Post />
+      <Post onPress={() => navigation.navigate("DetailPage")} />
       <Post />
     </ScreenWrapper>
   );
