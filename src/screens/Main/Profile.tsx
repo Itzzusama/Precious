@@ -8,14 +8,15 @@ import Icons from "../../components/Icons";
 import { Colors } from "../../config/colors";
 import fonts from "../../assets/fonts";
 import SectionListCard from "../../components/Profile/SectionListCard";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import ProfileLogoutModal from "../../Modals/ProfileLogoutModal";
+import { RootStackParamList } from "../../navigation/types";
 
 const sections = [
   {
     title: "Account",
     items: [
-      { label: "Your Subscription Plan" },
+      { label: "Your Subscription Plan", screen: "Subscription" },
       { label: "Public Profile", switch: true },
       { label: "Allow Friends Request", switch: true },
       { label: "Share your wish list with brands", switch: true },
@@ -61,16 +62,19 @@ const sections = [
 ];
 
 const Profile = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   const [modalShow, setModalShow] = useState(false);
   return (
     <ScreenWrapper
-      paddingHorizontal={14}
+      paddingHorizontal={0.1}
       headerUnScrollable={() => (
         <Header isBack onMorePress={() => setModalShow(true)} />
       )}
     >
-      <TopCard onProfilePress={() => navigation.navigate("ProfileSetting")} />
+      <View style={{ paddingHorizontal: 14 }}>
+        <TopCard onProfilePress={() => navigation.navigate("ProfileSetting")} />
+      </View>
       {/* Step Progress Card */}
       <View style={styles.progressCard}>
         <View style={styles.progressHeader}>
@@ -185,6 +189,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 18,
     marginTop: 2,
+    marginHorizontal: 14,
   },
   progressHeader: {
     flexDirection: "row",
@@ -228,6 +233,8 @@ const styles = StyleSheet.create({
   cardsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingHorizontal: 14,
+    marginBottom: 20,
   },
   infoCard: {
     backgroundColor: Colors.LIGHT_GREY_WHITE,

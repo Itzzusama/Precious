@@ -9,4 +9,9 @@ export type RootStackParamList = {
   UserProfile: undefined;
   ChatList: undefined;
   ChatScreen: undefined;
+  ProfileSetting: undefined;
+  MyAddress: undefined;
+  DetailPage: undefined;
+  PersonalInformation: undefined;
+  Subscription: undefined;
 };

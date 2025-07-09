@@ -30,6 +30,8 @@ const PostBody: React.FC<PostBodyProps> = ({ images, setCurrentIndex }) => {
       keyExtractor={(item, index) => index.toString()}
       horizontal
       pagingEnabled
+      scrollEnabled
+      nestedScrollEnabled
       showsHorizontalScrollIndicator={false}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { x: scrollX } } }],

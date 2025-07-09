@@ -1,31 +1,18 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import TabStack from "./TabStack";
+import ChatList from "../screens/Main/ChatList";
+import ChatScreen from "../screens/Main/ChatScreen";
+import DetailPage from "../screens/Main/DetailPage";
+import MyAddress from "../screens/Main/MyAddress";
 import MyCollection from "../screens/Main/MyCollection";
-import UserProfile from "../screens/Main/UserProfile";
 import PersonalInformation from "../screens/Main/PersonalInformation";
 import ProfileSetting from "../screens/Main/ProfileSetting";
-
-// Define stack param list
-type MainStackParamList = {
-  PolicyPage: undefined;
-  TabStack: undefined;
-  MyCollection: undefined;
-  UserProfile: undefined;
-  ProfileSetting: undefined;
-  PersonalInformation: undefined;
-  ChatList: undefined;
-  ChatScreen: undefined;
-  MyAddress: undefined;
-  DetailPage: undefined;
-};
-
-const Stack = createNativeStackNavigator<MainStackParamList>();
-import ChatList from "../screens/Main/ChatList";
+import Subscription from "../screens/Main/Subscription";
+import UserProfile from "../screens/Main/UserProfile";
+import TabStack from "./TabStack";
 import { RootStackParamList } from "./types";
-import ChatScreen from "../screens/Main/ChatScreen";
-import MyAddress from "../screens/Main/MyAddress";
-import DetailPage from "../screens/Main/DetailPage";
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const MainStack: React.FC = () => {
   return (
@@ -47,6 +34,7 @@ const MainStack: React.FC = () => {
       <Stack.Screen name="ChatScreen" component={ChatScreen} />
       <Stack.Screen name="MyAddress" component={MyAddress} />
       <Stack.Screen name="DetailPage" component={DetailPage} />
+      <Stack.Screen name="Subscription" component={Subscription} />
     </Stack.Navigator>
   );
 };
