@@ -23,36 +23,36 @@ const ChatFooter: React.FC<FooterProps> = ({
   setInputText,
   sendMessage,
 }) => {
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const [keyboardHeight, setKeyboardHeight] = useState(new Animated.Value(0));
 
   useEffect(() => {
-    const keyboardWillShow = Keyboard.addListener(
-      "keyboardWillShow",
-      (event) => {
-        setKeyboardVisible(true);
+    const keyboardShowEvent =
+      Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
+    const keyboardHideEvent =
+      Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide";
 
-        Animated.timing(keyboardHeight, {
-          duration: event.duration,
-          toValue: event.endCoordinates.height,
-          useNativeDriver: false,
-        }).start();
-      }
-    );
-    const keyboardWillHide = Keyboard.addListener(
-      "keyboardWillHide",
-      (event) => {
-        setKeyboardVisible(false);
-        Animated.timing(keyboardHeight, {
-          duration: event.duration,
-          toValue: 0,
-          useNativeDriver: false,
-        }).start();
-      }
-    );
+    const keyboardShow = Keyboard.addListener(keyboardShowEvent, (event) => {
+      setIsKeyboardVisible(true);
+      Animated.timing(keyboardHeight, {
+        duration: event.duration,
+        toValue: event.endCoordinates.height,
+        useNativeDriver: false,
+      }).start();
+    });
+
+    const keyboardHide = Keyboard.addListener(keyboardHideEvent, (event) => {
+      setIsKeyboardVisible(false);
+      Animated.timing(keyboardHeight, {
+        duration: event.duration,
+        toValue: 0,
+        useNativeDriver: false,
+      }).start();
+    });
+
     return () => {
-      keyboardWillShow.remove();
-      keyboardWillHide.remove();
+      keyboardShow.remove();
+      keyboardHide.remove();
     };
   }, []);
 

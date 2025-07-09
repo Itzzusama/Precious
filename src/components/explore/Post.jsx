@@ -9,7 +9,7 @@ const Post = ({ onPress }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.9} disabled>
       <PostHeader user={{ name: "tom_", avatar: Images.logo }} />
       <PostBody
         images={[Images.post, Images.post, Images.post]}

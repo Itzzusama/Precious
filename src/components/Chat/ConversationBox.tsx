@@ -1,18 +1,20 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 import { Colors } from "../../config/colors";
+import { RootStackParamList } from "../../navigation/types";
 import CustomText from "../CustomText";
 import ImageFast from "../ImageFast";
-import { useNavigation } from "@react-navigation/native";
 
 type cardProps = {
   item: any;
 };
 
 const ConversationBox: React.FC<cardProps> = ({ item }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   return (
     <TouchableOpacity
       style={styles.card}
