@@ -31,7 +31,7 @@ const sections = [
   {
     title: "My Details",
     items: [
-      { label: "Personal Information" },
+      { label: "Personal Information" , screen:"PersonalInformation"},
       { label: "My Addresses" },
       { label: "My Bank Details" },
       { label: "Paying methods" },
@@ -69,7 +69,6 @@ const ProfileSetting = () => {
           key={section.title}
           title={section.title}
           items={section.items}
-          onPress={() => navigation.navigate("PersonalInformation")}
         />
       ))}
     </ScreenWrapper>
