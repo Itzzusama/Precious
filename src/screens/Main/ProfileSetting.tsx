@@ -24,15 +24,12 @@ type SectionListCardProps = {
   items: SectionItem[];
 };
 
-// Reusable SectionListCard component
-
-// Section data
 const sections = [
   {
     title: "My Details",
     items: [
-      { label: "Personal Information" , screen:"PersonalInformation"},
-      { label: "My Addresses" },
+      { label: "Personal Information", screen: "PersonalInformation" },
+      { label: "My Addresses", screen: "MyAddress" },
       { label: "My Bank Details" },
       { label: "Paying methods" },
       { label: "Country and Currency" },

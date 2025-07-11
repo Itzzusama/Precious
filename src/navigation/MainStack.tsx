@@ -11,32 +11,49 @@ import Subscription from "../screens/Main/Subscription";
 import UserProfile from "../screens/Main/UserProfile";
 import TabStack from "./TabStack";
 import { RootStackParamList } from "./types";
+import { Icons, ImageFast } from "../components";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Colors } from "../config/colors";
+import { useNavigation } from "@react-navigation/native";
+import CreateAd from "../screens/Main/CreateAd";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const MainStack: React.FC = () => {
+  const navigation = useNavigation();
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        animation: "slide_from_bottom",
-      }}
-    >
-      <Stack.Screen name="TabStack" component={TabStack} />
-      <Stack.Screen name="MyCollection" component={MyCollection} />
-      <Stack.Screen name="UserProfile" component={UserProfile} />
-      <Stack.Screen name="ProfileSetting" component={ProfileSetting} />
-      <Stack.Screen
-        name="PersonalInformation"
-        component={PersonalInformation}
-      />
-      <Stack.Screen name="ChatList" component={ChatList} />
-      <Stack.Screen name="ChatScreen" component={ChatScreen} />
-      <Stack.Screen name="MyAddress" component={MyAddress} />
-      <Stack.Screen name="DetailPage" component={DetailPage} />
-      <Stack.Screen name="Subscription" component={Subscription} />
-    </Stack.Navigator>
+
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          animation: "slide_from_bottom",
+        }}
+      >
+        <Stack.Screen name="TabStack" component={TabStack} />
+        <Stack.Screen name="MyCollection" component={MyCollection} />
+        <Stack.Screen name="CreateAd" component={CreateAd} />
+        <Stack.Screen name="UserProfile" component={UserProfile} />
+        <Stack.Screen name="ProfileSetting" component={ProfileSetting} />
+        <Stack.Screen
+          name="PersonalInformation"
+          component={PersonalInformation}
+        />
+        <Stack.Screen name="ChatList" component={ChatList} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen name="MyAddress" component={MyAddress} />
+        <Stack.Screen name="DetailPage" component={DetailPage} />
+        <Stack.Screen name="Subscription" component={Subscription} />
+      </Stack.Navigator>
+
+
   );
 };
 
 export default MainStack;
+const styles = StyleSheet.create({
+  
+  tabIcon: {
+    width: 30,
+    height: 30,
+  },
+});

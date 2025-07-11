@@ -34,6 +34,7 @@ interface CustomDropdownProps {
   withLabel?: string;
   paddingHorizontal?: string;
   height?: string;
+  borderWidth?: number;
 }
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
@@ -46,6 +47,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   withLabel,
   paddingHorizontal,
   height,
+  borderWidth
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [text, setText] = useState("");
@@ -94,6 +96,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
             {
               paddingHorizontal: paddingHorizontal || 20,
               height: height || 52,
+              borderWidth: borderWidth,
             },
           ]}
           onPress={toggleDropdown}
@@ -169,7 +172,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-
     backgroundColor: Colors.WHITE,
     overflow: "scroll",
   },

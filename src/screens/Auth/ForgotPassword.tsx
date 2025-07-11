@@ -21,19 +21,20 @@ import { Images } from "../../assets/images";
 // Replace this with your actual navigation param types
 type RootStackParamList = {
   Login: undefined;
-  // Add other screens as needed
 };
 
-const Login: React.FC = () => {
+const ForgotPassword: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const init = {
     email: "",
+   
   };
 
   const inits = {
     emailError: "",
+  
   };
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,16 +47,17 @@ const Login: React.FC = () => {
       placeholder: "Your Email*",
       value: state.email,
       onChange: (text: string) => setState({ ...state, email: text }),
-      error: errors?.emailError,
+      error: errors.emailError,
       autoCapitalize: "none" as const,
     },
+    
   ];
 
   return (
     <ScreenWrapper scrollEnabled backgroundColor={Colors.authBg}>
       <ImageFast source={Images.appLogo} style={styles.image} />
       <CustomText
-        label="Welcome back!"
+        label="Forgot Password"
         fontFamily={fonts.semiBold}
         fontSize={30}
         marginTop={10}
@@ -64,7 +66,7 @@ const Login: React.FC = () => {
       />
       <View style={styles.line} />
       <CustomText
-        label="Log in"
+        label="Enter Email to continue"
         fontFamily={fonts.semiBold}
         fontSize={17}
         marginBottom={30}
@@ -85,7 +87,7 @@ const Login: React.FC = () => {
 
       <CustomButton
         title="Continue"
-        onPress={() => navigation.navigate("Password")}
+        onPress={() => navigation.navigate("ResetPassword")}
         color={Colors.WHITE}
         backgroundColor={Colors.BLACK}
         borderRadius={2}
@@ -95,25 +97,9 @@ const Login: React.FC = () => {
           (key) => errors[key as keyof typeof errors] !== ""
         )}
       />
-
-      <CustomText label="or" alignSelf="center" marginTop={30} />
-
-      <View
-        style={[styles.row, { justifyContent: "space-evenly", marginTop: 30 }]}
-      >
-        <TouchableOpacity style={styles.logoOutline}>
-          <ImageFast source={Images.apple} style={styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoOutline}>
-          <ImageFast source={Images.google} style={styles.logo} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoOutline}>
-          <ImageFast source={Images.facebook} style={styles.logo} />
-        </TouchableOpacity>
-      </View>
-
+     
       <CustomText
-        label={`Forgot user name or password or with which platform you signed in?\nWe can help You`}
+        label={`Remember Your Password?`}
         alignSelf="center"
         marginTop={10}
         textAlign="center"
@@ -122,18 +108,18 @@ const Login: React.FC = () => {
       />
 
       <CustomText
-        label="Forgot Login?"
+        label="Login"
         alignSelf="center"
-        marginTop={30}
+        marginTop={10}
         textDecorationLine="underline"
         fontFamily={fonts.semiBold}
-        onPress={()=>navigation.navigate("ForgotPassword")}
+        onPress={() => navigation.navigate("Login")}
       />
     </ScreenWrapper>
   );
 };
 
-export default Login;
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
   row: {

@@ -24,7 +24,10 @@ const sections = [
   },
   {
     title: "My Collection",
-    items: [{ label: "Items Published" }, { label: "Saved Items" }],
+    items: [
+      { label: "Items Published", screen: "MyCollection" },
+      { label: "Saved Items", screen: "MyCollection" },
+    ],
   },
   {
     title: "My Sales",
