@@ -9,6 +9,7 @@ import {
 import CustomDropDown from "../../components/CustomDropDown";
 import Header from "../../components/Header";
 
+// Dropdown options
 const SECTION_OPTIONS = ["Woman", "Man", "Unisex"];
 const CATEGORY_OPTIONS = [
   "Watch",
@@ -40,6 +41,7 @@ const COLOR_OPTIONS = [
 const CONDITION_OPTIONS = ["New", "Excellent", "Good", "Used"];
 const SELLER_OPTIONS = ["Private Seller", "Dealer"];
 
+// Initial form state
 const initialState = {
   title: "",
   subtitle: "",
@@ -76,6 +78,11 @@ const CreateAd = () => {
   const [state, setState] = useState<StateType>(initialState);
   const [errors, setErrors] = useState<ErrorsType>(initialErrors);
   const [submitting, setSubmitting] = useState(false);
+
+  const handleChange = (key: string, value: string | string[]) => {
+    setState((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => ({ ...prev, [key]: "" }));
+  };
 
   const validate = () => {
     let valid = true;
@@ -120,15 +127,9 @@ const CreateAd = () => {
     return valid;
   };
 
-  const handleChange = (key: string, value: string | string[]) => {
-    setState((prev) => ({ ...prev, [key]: value }));
-    setErrors((prev) => ({ ...prev, [key]: "" }));
-  };
-
   const handleSubmit = () => {
     if (validate()) {
       setSubmitting(true);
-      // Simulate submit
       setTimeout(() => {
         setSubmitting(false);
         Alert.alert("Ad Created", "Your ad has been created successfully!");
@@ -137,11 +138,89 @@ const CreateAd = () => {
     }
   };
 
-  // Placeholder for image picker
   const handlePickImages = () => {
-    // Simulate picking images
     handleChange("images", ["image1.png"]);
   };
+
+  // Define form fields
+  const inputFields = [
+    {
+      key: "title",
+      placeholder: "Title*",
+      label: "Title*",
+      errorKey: "title",
+    },
+    {
+      key: "subtitle",
+      placeholder: "Subtitle / Model",
+      label: "Subtitle / Model",
+    },
+    {
+      key: "price",
+      placeholder: "Price*",
+      label: "Price*",
+      keyboardType: "numeric",
+      errorKey: "price",
+    },
+    {
+      key: "oldPrice",
+      placeholder: "Old Price (optional)",
+      label: "Old Price (optional)",
+      keyboardType: "numeric",
+    },
+    {
+      key: "delivery",
+      placeholder: "Delivery Time (e.g. Delivery within 10 Days)",
+      label: "Delivery Time",
+    },
+    {
+      key: "size",
+      placeholder: "Size (e.g. cm 15)",
+      label: "Size",
+    },
+  ];
+
+  const dropdownFields = [
+    {
+      key: "section",
+      label: "Section*",
+      data: SECTION_OPTIONS,
+      errorKey: "section",
+    },
+    {
+      key: "category",
+      label: "Category*",
+      data: CATEGORY_OPTIONS,
+      errorKey: "category",
+    },
+    {
+      key: "brand",
+      label: "Brand*",
+      data: BRAND_OPTIONS,
+      errorKey: "brand",
+    },
+    {
+      key: "material",
+      label: "Jewelry Material",
+      data: MATERIAL_OPTIONS,
+    },
+    {
+      key: "color",
+      label: "Color",
+      data: COLOR_OPTIONS,
+    },
+    {
+      key: "condition",
+      label: "Condition*",
+      data: CONDITION_OPTIONS,
+      errorKey: "condition",
+    },
+    {
+      key: "seller",
+      label: "Seller Details",
+      data: SELLER_OPTIONS,
+    },
+  ];
 
   return (
     <ScreenWrapper
@@ -150,136 +229,79 @@ const CreateAd = () => {
       paddingHorizontal={14}
       headerUnScrollable={() => <Header isBack profile name="Create Ad" />}
     >
-        <CustomText
-          label="Basic Info"
-          fontSize={18}
-          fontFamily="Roboto-Bold"
-          marginBottom={10}
-        />
+      <CustomText
+        label="Basic Info"
+        fontSize={18}
+        fontFamily="Roboto-Bold"
+        marginBottom={10}
+      />
+
+      {/* Render input fields */}
+      {inputFields.map((field) => (
         <CustomInput
-          placeholder="Title*"
-          value={state.title}
-          onChangeText={(text: string) => handleChange("title", text)}
-          error={errors.title}
-          withLabel="Title*"
+          key={field.key}
+          placeholder={field.placeholder}
+          value={state[field.key]}
+          onChangeText={(text: string) => handleChange(field.key, text)}
+          keyboardType={field.keyboardType}
+          error={field.errorKey ? errors[field.errorKey] : undefined}
+          withLabel={field.label}
         />
-        <CustomInput
-          placeholder="Subtitle / Model"
-          value={state.subtitle}
-          onChangeText={(text: string) => handleChange("subtitle", text)}
-          withLabel="Subtitle / Model"
-        />
-        <CustomInput
-          placeholder="Price*"
-          value={state.price}
-          onChangeText={(text: string) => handleChange("price", text)}
-          keyboardType="numeric"
-          error={errors.price}
-          withLabel="Price*"
-        />
-        <CustomInput
-          placeholder="Old Price (optional)"
-          value={state.oldPrice}
-          onChangeText={(text: string) => handleChange("oldPrice", text)}
-          keyboardType="numeric"
-          withLabel="Old Price (optional)"
-        />
-        <CustomInput
-          placeholder="Delivery Time (e.g. Delivery within 10 Days)"
-          value={state.delivery}
-          onChangeText={(text: string) => handleChange("delivery", text)}
-          withLabel="Delivery Time"
-        />
+      ))}
+
+      {/* Render dropdown fields */}
+      {dropdownFields.map((field) => (
         <CustomDropDown
-          data={SECTION_OPTIONS}
-          value={state.section}
-          setValue={(val: string) => handleChange("section", val)}
-          error={errors.section}
-          withLabel="Section*"
+          key={field.key}
+          data={field.data}
+          value={state[field.key]}
+          setValue={(val: string) => handleChange(field.key, val)}
+          error={field.errorKey ? errors[field.errorKey] : undefined}
+          withLabel={field.label}
         />
-        <CustomDropDown
-          data={CATEGORY_OPTIONS}
-          value={state.category}
-          setValue={(val: string) => handleChange("category", val)}
-          error={errors.category}
-          withLabel="Category*"
-        />
-        <CustomDropDown
-          data={BRAND_OPTIONS}
-          value={state.brand}
-          setValue={(val: string) => handleChange("brand", val)}
-          error={errors.brand}
-          withLabel="Brand*"
-        />
-        <CustomDropDown
-          data={MATERIAL_OPTIONS}
-          value={state.material}
-          setValue={(val: string) => handleChange("material", val)}
-          withLabel="Jewelry Material"
-        />
-        <CustomInput
-          placeholder="Size (e.g. cm 15)"
-          value={state.size}
-          onChangeText={(text: string) => handleChange("size", text)}
-          withLabel="Size"
-        />
-        <CustomDropDown
-          data={COLOR_OPTIONS}
-          value={state.color}
-          setValue={(val: string) => handleChange("color", val)}
-          withLabel="Color"
-        />
-        <CustomDropDown
-          data={CONDITION_OPTIONS}
-          value={state.condition}
-          setValue={(val: string) => handleChange("condition", val)}
-          error={errors.condition}
-          withLabel="Condition*"
-        />
-        <CustomDropDown
-          data={SELLER_OPTIONS}
-          value={state.seller}
-          setValue={(val: string) => handleChange("seller", val)}
-          withLabel="Seller Details"
-        
-        />
-        <CustomText label="Images*" fontSize={14} marginTop={10} />
-        <CustomButton
-          title={
-            state.images.length > 0
-              ? `${state.images.length} Image(s) Selected`
-              : "Pick Images"
-          }
-          onPress={handlePickImages}
-          backgroundColor="#eee"
-          color="#000"
-        />
-        {errors.images ? (
-          <CustomText label={errors.images} color="red" fontSize={12} />
-        ) : null}
-        <CustomText
-          label="Description*"
-          fontSize={18}
-          fontFamily="Roboto-Bold"
-          marginTop={20}
-          marginBottom={10}
-        />
-        <CustomInput
-          placeholder="Description*"
-          value={state.description}
-          onChangeText={(text: string) => handleChange("description", text)}
-          error={errors.description}
-          withLabel="Description*"
-          multiline
-          height={120}
-          
-        />
-        <CustomButton
-          title={submitting ? "Submitting..." : "Create Ad"}
-          onPress={handleSubmit}
-          disabled={submitting}
-          marginTop={24}
-        />
+      ))}
+
+      {/* Images */}
+      <CustomText label="Images*" fontSize={14} marginTop={10} />
+      <CustomButton
+        title={
+          state.images.length > 0
+            ? `${state.images.length} Image(s) Selected`
+            : "Pick Images"
+        }
+        onPress={handlePickImages}
+        backgroundColor="#eee"
+        color="#000"
+      />
+      {errors.images ? (
+        <CustomText label={errors.images} color="red" fontSize={12} />
+      ) : null}
+
+      {/* Description */}
+      <CustomText
+        label="Description*"
+        fontSize={18}
+        fontFamily="Roboto-Bold"
+        marginTop={20}
+        marginBottom={10}
+      />
+      <CustomInput
+        placeholder="Description*"
+        value={state.description}
+        onChangeText={(text: string) => handleChange("description", text)}
+        error={errors.description}
+        withLabel="Description*"
+        multiline
+        height={120}
+      />
+
+      {/* Submit button */}
+      <CustomButton
+        title={submitting ? "Submitting..." : "Create Ad"}
+        onPress={handleSubmit}
+        disabled={submitting}
+        marginTop={24}
+      />
     </ScreenWrapper>
   );
 };
