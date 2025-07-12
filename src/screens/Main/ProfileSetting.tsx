@@ -42,9 +42,9 @@ const sections = [
   {
     title: "Settings",
     items: [
-      { label: "Push Notifications" },
-      { label: "Email Notifications" },
-      { label: "WhatsApp and SMS Notifications" },
+      { label: "Push Notifications", switch: true },
+      { label: "Email Notifications", switch: true },
+      { label: "WhatsApp and SMS Notifications", switch: true },
     ],
   },
 ];

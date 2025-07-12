@@ -16,6 +16,10 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "../config/colors";
 import { useNavigation } from "@react-navigation/native";
 import CreateAd from "../screens/Main/CreateAd";
+import PrivacyPolicy from "../screens/Main/ProfileScreens/PrivacyPolicy";
+import TermsCondition from "../screens/Main/ProfileScreens/TermsCondition";
+import Faqs from "../screens/Main/ProfileScreens/Faqs";
+import OrderPage from "../screens/Main/ProfileScreens/OrderPage";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -38,11 +42,15 @@ const MainStack: React.FC = () => {
           name="PersonalInformation"
           component={PersonalInformation}
         />
+        <Stack.Screen name="Faqs" component={Faqs} />
         <Stack.Screen name="ChatList" component={ChatList} />
-        <Stack.Screen name="ChatScreen" component={ChatScreen} />
         <Stack.Screen name="MyAddress" component={MyAddress} />
+        <Stack.Screen name="OrderPage" component={OrderPage} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
         <Stack.Screen name="DetailPage" component={DetailPage} />
         <Stack.Screen name="Subscription" component={Subscription} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Stack.Screen name="TermsCondition" component={TermsCondition} />
       </Stack.Navigator>
 
 

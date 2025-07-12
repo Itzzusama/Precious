@@ -39,7 +39,10 @@ const sections = [
   },
   {
     title: "My Orders",
-    items: [{ label: "Completed" }, { label: "In Process" }],
+    items: [
+      { label: "Completed", screen: "OrderPage" },
+      { label: "In Process", screen: "OrderPage" },
+    ],
   },
   {
     title: "Activities",
@@ -57,9 +60,9 @@ const sections = [
       { label: "Quality Control" },
       { label: "Earn your VIP status" },
       { label: "Delivery & Returns" },
-      { label: "FAQ" },
-      { label: "Privacy Policy" },
-      { label: "Terms of Use" },
+      { label: "FAQ", screen: "Faqs" },
+      { label: "Privacy Policy", screen: "PrivacyPolicy" },
+      { label: "Terms of Use", screen: "TermsCondition" },
     ],
   },
 ];
