@@ -11,6 +11,8 @@ import SectionListCard from "../../components/Profile/SectionListCard";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import ProfileLogoutModal from "../../Modals/ProfileLogoutModal";
 import { RootStackParamList } from "../../navigation/types";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../state/reducers/userReducer";
 
 const sections = [
   {
@@ -69,6 +71,7 @@ const sections = [
 
 const Profile = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
 
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -181,6 +184,20 @@ const Profile = () => {
       <ProfileLogoutModal
         isVisible={modalShow}
         onDisable={() => setModalShow(false)}
+        onLogoutPress={() => {
+          dispatch(setToken("")); // Token clear kar diya
+
+          setTimeout(() => {
+            navigation.reset({
+              index: 0,
+              routes: [
+                {
+                  name: "AuthStack",
+                },
+              ],
+            });
+          }, 800);
+        }}
       />
     </ScreenWrapper>
   );

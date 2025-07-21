@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator, Dimensions } from "react-native";
 import RenderHTML from "react-native-render-html";
 
-import Header from "../../../components/Header";
 import { ScreenWrapper } from "../../../components";
+import Header from "../../../components/Header";
 import { Colors } from "../../../config/colors";
 
-// Sample privacy policy content
 const samplePrivacyPolicy = [
   "We value your privacy and are committed to protecting your personal data.",
   "Information collected is used to provide and improve our services.",
@@ -19,20 +18,9 @@ const PrivacyPolicy = () => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const getData = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const res = await get("users/privacy");
-  //     setText(res?.data?.privacy?.description);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     setLoading(false);
-  //     console.log("========error========", error.response.data);
-  //   }
-  // };
+
 
   useEffect(() => {
-    // Simulate data fetching
     setLoading(true);
     const simulatedHTML = `<ul>${samplePrivacyPolicy
       .map((item) => `<li>${item}</li>`)

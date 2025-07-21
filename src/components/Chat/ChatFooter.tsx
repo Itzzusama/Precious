@@ -82,7 +82,7 @@ const ChatFooter: React.FC<FooterProps> = ({
           onPress={sendMessage}
           disabled={!inputText || inputText?.trim() === ""}
         >
-          <Icons name={"send"} size={18} color="#fff" />
+          <Icons name={"send"} size={18} color={Colors.WHITE} />
         </TouchableOpacity>
       </Animated.View>
     </>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.NAVY_BLUE,
+    backgroundColor: Colors.WARNING,
     borderRadius: 50,
   },
 });

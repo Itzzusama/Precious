@@ -5,6 +5,9 @@ import { CustomButton, CustomModal, CustomText, Icons } from "../components";
 
 import fonts from "../assets/fonts";
 import { Colors } from "../config/colors";
+import { setToken } from "../state/reducers/userReducer";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
 
 type FilterModalProps = {
   isVisible?: boolean;
@@ -45,7 +48,10 @@ const ProfileLogoutModal: React.FC<FilterModalProps> = ({
   onDisable,
   onPress,
   loading,
+  onLogoutPress 
 }) => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   return (
     <CustomModal
       backdropOpacity={0.8}
@@ -87,6 +93,7 @@ const ProfileLogoutModal: React.FC<FilterModalProps> = ({
           marginTop={20}
           backgroundColor="black"
           color="white"
+          onPress={onLogoutPress}
         />
         <CustomButton
           title="Delete Account"

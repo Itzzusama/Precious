@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  ScrollView,
+  View,
 } from 'react-native';
 
-import { Colors } from '../../../config/colors'; // Adjust path if needed
-import Header from '../../../components/Header';
 import { ScreenWrapper } from '../../../components';
+import Header from '../../../components/Header';
+import { Colors } from '../../../config/colors';
 
 const sampleFaqs = [
   {

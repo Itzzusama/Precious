@@ -1,23 +1,28 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View, ImageSourcePropType } from "react-native";
 import CustomText from "../CustomText";
 import ImageFast from "../ImageFast";
 import Icons from "../Icons";
 import fonts from "../../assets/fonts";
 import { Images } from "../../assets/images";
 
-type HeaderProps = {
-  user: any;
-};
+interface User {
+  name: string;
+  avatar: ImageSourcePropType; // React Native-compatible image source type
+}
+
+interface HeaderProps {
+  user: User;
+}
 
 const PostHeader: React.FC<HeaderProps> = ({ user }) => {
   return (
     <View style={styles.container}>
       <View style={styles.row1}>
-        <ImageFast source={Images?.user} style={styles.avatar} />
+        <ImageFast source={Images.user} style={styles.avatar} />
         <CustomText
           fontSize={16}
-          label={user?.name}
+          label={user.name}
           fontFamily={fonts.medium}
         />
       </View>
