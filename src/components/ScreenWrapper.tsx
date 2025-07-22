@@ -59,56 +59,61 @@ const ScreenWrapper: React.FC<ScreenWrapperProps> = ({
   paddingHorizontal,
 }) => {
   const content = () => (
-    <View
+    <SafeAreaView
       style={[
         styles.container,
         {
-          paddingBottom: paddingBottom,
           backgroundColor: backgroundImage ? "transparent" : backgroundColor,
         },
       ]}
     >
       <FocusAwareStatusBar
-        barStyle={"dark-content"}
+        barStyle="dark-content"
         backgroundColor={statusBarColor}
         translucent={translucent}
       />
-      {!translucent && Platform.OS === "ios" && (
-        <SafeAreaView
-          style={[styles.container, { backgroundColor: statusBarColor }]}
-        />
-      )}
+
       {headerUnScrollable()}
+
       {scrollEnabled ? (
         <KeyboardAwareScrollView
           nestedScrollEnabled={nestedScrollEnabled}
           refreshControl={refreshControl}
-          style={[
-            styles.container,
-            { backgroundColor, paddingHorizontal: paddingHorizontal || 16 },
-          ]}
+          style={{ flex: 1 }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: paddingHorizontal ?? 16,
+            paddingBottom: paddingBottom,
+          }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
           {children}
         </KeyboardAwareScrollView>
       ) : (
-        <View style={{ paddingHorizontal: paddingHorizontal || 25, flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            paddingHorizontal: paddingHorizontal ?? 25,
+            paddingBottom,
+          }}
+        >
           {children}
         </View>
       )}
+
       {footerUnScrollable()}
-    </View>
+    </SafeAreaView>
   );
 
   return backgroundImage ? (
-    <View style={{ width, height, zIndex: 999 }}>
-      {content()}
+    <View style={{ flex: 1 }}>
       <ImageFast
         source={backgroundImage}
-        style={{ width, height, position: "absolute", zIndex: -1 }}
+        style={StyleSheet.absoluteFillObject}
         resizeMode="cover"
       />
+      {content()}
     </View>
   ) : (
     content()

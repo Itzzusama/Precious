@@ -53,6 +53,9 @@ const Login: React.FC = () => {
 
   return (
     <ScreenWrapper scrollEnabled backgroundColor={Colors.authBg}>
+     
+
+   
       <ImageFast source={Images.appLogo} style={styles.image} />
       <CustomText
         label="Welcome back!"
@@ -128,6 +131,7 @@ const Login: React.FC = () => {
         textDecorationLine="underline"
         fontFamily={fonts.semiBold}
       />
+     
     </ScreenWrapper>
   );
 };
@@ -146,17 +150,17 @@ const styles = StyleSheet.create({
     width: 70,
     alignSelf: "center",
     marginTop: 80,
-  } as ImageStyle,
+  } ,
   logoOutline: {
     padding: 10,
     backgroundColor: "#B29981",
     borderRadius: 99,
-  } as ImageStyle,
+  } ,
   logo: {
     height: 40,
     width: 40,
     padding: 14,
-  } as ImageStyle,
+  } ,
   line: {
     height: 50,
     marginVertical: 12,
