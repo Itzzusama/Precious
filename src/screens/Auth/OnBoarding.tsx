@@ -40,6 +40,8 @@ const OnBoarding: React.FC = () => {
           color="white"
           width={"47%"}
           borderRadius={2}
+          onPress={() => navigation.navigate("Signup")}
+
         />
         <CustomButton
           title="Login"

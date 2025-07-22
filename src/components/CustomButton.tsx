@@ -10,6 +10,7 @@ import {
 import CustomText from "./CustomText";
 import fonts from "../assets/fonts";
 import { Colors } from "../config/colors";
+import { scale, verticalScale, moderateScale } from "../config/scale"; // ✅ import scaling
 
 type CustomButtonProps = {
   onPress?: () => void;
@@ -48,7 +49,7 @@ type CustomButtonProps = {
   borderColor?: string;
 };
 
-const CustomButton: React.FC<CustomButtonProps> = ({
+const CustomButton = ({
   onPress,
   title,
   disabled,
@@ -60,8 +61,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   backgroundColor,
   color,
   width = "100%",
-  height = 56,
-  borderRadius = 8,
+  height = verticalScale(54),
+  borderRadius = scale(8),
   justifyContent = "center",
   alignItems = "center",
   flexDirection = "row",
@@ -71,7 +72,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   ImageIcon,
   borderWidth = 0,
   borderColor,
-}) => {
+}: CustomButtonProps): JSX.Element => {
   return (
     <TouchableOpacity
       disabled={disabled || loading}
@@ -96,16 +97,16 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onPress={onPress}
     >
       {loading ? (
-        <ActivityIndicator size={25} color={indicatorcolor || Colors.WHITE} />
+        <ActivityIndicator size={scale(25)} color={indicatorcolor || Colors.WHITE} />
       ) : (
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           {ImageIcon && ImageIcon}
           <View>
             <CustomText
               label={title}
-              lineHeight={28}
+              lineHeight={verticalScale(28)}
               textStyle={customText}
-              fontSize={fontSize || 15}
+              fontSize={fontSize || moderateScale(15)}
               fontFamily={fonts.semiBold}
               color={color || "#fff"}
             />

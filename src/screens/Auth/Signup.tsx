@@ -21,19 +21,22 @@ import { Images } from "../../assets/images";
 // Replace this with your actual navigation param types
 type RootStackParamList = {
   Login: undefined;
-  // Add other screens as needed
 };
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const init = {
     email: "",
+    password: "",
+    fullName: "",
   };
 
   const inits = {
     emailError: "",
+    passwordError: "",
+    fullNameError: "",
   };
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -46,19 +49,32 @@ const Login: React.FC = () => {
       placeholder: "Your Email*",
       value: state.email,
       onChange: (text: string) => setState({ ...state, email: text }),
-      error: errors?.emailError,
+      error: errors.emailError,
+      autoCapitalize: "none" as const,
+    },
+    {
+      id: 2,
+      placeholder: "Your Full Name*",
+      value: state.fullName,
+      onChange: (text: string) => setState({ ...state, fullName: text }),
+      error: errors.fullNameError,
+      autoCapitalize: "words" as const,
+    },
+    {
+      id: 3,
+      placeholder: "Your Password*",
+      value: state.password,
+      onChange: (text: string) => setState({ ...state, password: text }),
+      error: errors.passwordError,
       autoCapitalize: "none" as const,
     },
   ];
 
   return (
     <ScreenWrapper scrollEnabled backgroundColor={Colors.authBg}>
-     
-
-   
       <ImageFast source={Images.appLogo} style={styles.image} />
       <CustomText
-        label="Welcome back!"
+        label="Create Account"
         fontFamily={fonts.semiBold}
         fontSize={30}
         marginTop={10}
@@ -67,7 +83,7 @@ const Login: React.FC = () => {
       />
       <View style={styles.line} />
       <CustomText
-        label="Log in"
+        label="Sign up to continue"
         fontFamily={fonts.semiBold}
         fontSize={17}
         marginBottom={30}
@@ -88,7 +104,7 @@ const Login: React.FC = () => {
 
       <CustomButton
         title="Continue"
-        onPress={() => navigation.navigate("Password")}
+        onPress={() => navigation.navigate("MainStack")}
         color={Colors.WHITE}
         backgroundColor={Colors.BLACK}
         borderRadius={2}
@@ -116,7 +132,7 @@ const Login: React.FC = () => {
       </View>
 
       <CustomText
-        label={`Forgot user name or password or with which platform you signed in?\nWe can help You`}
+        label={`Already Have an Account?`}
         alignSelf="center"
         marginTop={10}
         textAlign="center"
@@ -125,19 +141,18 @@ const Login: React.FC = () => {
       />
 
       <CustomText
-        label="Forgot Login?"
+        label="Login"
         alignSelf="center"
-        marginTop={30}
+        marginTop={10}
         textDecorationLine="underline"
         fontFamily={fonts.semiBold}
-        onPress={()=>navigation.navigate("ForgotPassword")}
+        onPress={() => navigation.navigate("Login")}
       />
-     
     </ScreenWrapper>
   );
 };
 
-export default Login;
+export default Signup;
 
 const styles = StyleSheet.create({
   row: {
@@ -151,17 +166,17 @@ const styles = StyleSheet.create({
     width: 70,
     alignSelf: "center",
     marginTop: 80,
-  } ,
+  } as ImageStyle,
   logoOutline: {
     padding: 10,
     backgroundColor: "#B29981",
     borderRadius: 99,
-  } ,
+  } as ImageStyle,
   logo: {
     height: 40,
     width: 40,
     padding: 14,
-  } ,
+  } as ImageStyle,
   line: {
     height: 50,
     marginVertical: 12,

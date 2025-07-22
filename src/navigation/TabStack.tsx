@@ -43,6 +43,9 @@ const TabStack: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
+    <>
+    
+    
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: Colors.BLACK,
@@ -112,6 +115,20 @@ const TabStack: React.FC = () => {
         component={Profile}
       />
     </Tab.Navigator>
+
+    <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate("CreateAd")}
+            style={styles.plusIconOverflow}
+          >
+            <Icons
+              size={22}
+              name={"plus-a"}
+              color={Colors.WHITE}
+              family={"Fontisto"}
+            />
+          </TouchableOpacity>
+    </>
   );
 };
 
@@ -144,8 +161,22 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: 15,
   },
+  plusIconOverflow: {
+    height: 46,
+    width: 46,
+    justifyContent: "center",
+    alignItems: "center",
+    resizeMode: "contain",
+    backgroundColor: Colors.BLACK,
+    borderRadius: 50,
+    position:"absolute",
+    bottom:110, right:20,
+    // marginTop: 15,
+  },
   tabIcon: {
     width: 30,
     height: 30,
   },
+
+  
 });

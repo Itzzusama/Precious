@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 8,
     borderRadius: 10,
-    backgroundColor: "#333",
+    backgroundColor: Colors.DARK_GREY,
     marginHorizontal: 2,
   },
   caption: {

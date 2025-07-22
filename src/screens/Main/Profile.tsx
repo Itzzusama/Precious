@@ -11,6 +11,8 @@ import SectionListCard from "../../components/Profile/SectionListCard";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import ProfileLogoutModal from "../../Modals/ProfileLogoutModal";
 import { RootStackParamList } from "../../navigation/types";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../state/reducers/userReducer";
 
 const sections = [
   {
@@ -24,7 +26,10 @@ const sections = [
   },
   {
     title: "My Collection",
-    items: [{ label: "Items Published" }, { label: "Saved Items" }],
+    items: [
+      { label: "Items Published", screen: "MyCollection" },
+      { label: "Saved Items", screen: "MyCollection" },
+    ],
   },
   {
     title: "My Sales",
@@ -36,7 +41,10 @@ const sections = [
   },
   {
     title: "My Orders",
-    items: [{ label: "Completed" }, { label: "In Process" }],
+    items: [
+      { label: "Completed", screen: "OrderPage" },
+      { label: "In Process", screen: "OrderPage" },
+    ],
   },
   {
     title: "Activities",
@@ -54,15 +62,16 @@ const sections = [
       { label: "Quality Control" },
       { label: "Earn your VIP status" },
       { label: "Delivery & Returns" },
-      { label: "FAQ" },
-      { label: "Privacy Policy" },
-      { label: "Terms of Use" },
+      { label: "FAQ", screen: "Faqs" },
+      { label: "Privacy Policy", screen: "PrivacyPolicy" },
+      { label: "Terms of Use", screen: "TermsCondition" },
     ],
   },
 ];
 
 const Profile = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
 
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -175,6 +184,20 @@ const Profile = () => {
       <ProfileLogoutModal
         isVisible={modalShow}
         onDisable={() => setModalShow(false)}
+        onLogoutPress={() => {
+          dispatch(setToken("")); // Token clear kar diya
+
+          setTimeout(() => {
+            navigation.reset({
+              index: 0,
+              routes: [
+                {
+                  name: "AuthStack",
+                },
+              ],
+            });
+          }, 800);
+        }}
       />
     </ScreenWrapper>
   );

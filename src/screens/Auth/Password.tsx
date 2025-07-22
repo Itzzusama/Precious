@@ -11,6 +11,7 @@ import { CustomInput, ImageFast } from "../../components";
 import fonts from "../../assets/fonts";
 import { Colors } from "../../config/colors";
 import { Images } from "../../assets/images";
+import { setToken } from "../../state/reducers/userReducer";
 
 type RootStackParamList = {
   Login: undefined;
@@ -80,7 +81,14 @@ const Password: React.FC = () => {
 
       <CustomButton
         title="Continue"
-        onPress={()=>navigation.navigate("MainStack")}
+        onPress={() => {
+          dispatch(setToken("dummyToken123"));
+
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "MainStack" }],
+          });
+        }}
         color={Colors.WHITE}
         backgroundColor={Colors.BLACK}
         borderRadius={2}

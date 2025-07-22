@@ -9,7 +9,7 @@ type BubbleProps = {
 };
 
 const ChatBubble: React.FC<BubbleProps> = ({ isSender, item }) => {
-  const bg = isSender ? Colors.NAVY_BLUE : Colors.LIGHT_GREY_DARK;
+  const bg = isSender ? Colors.WARNING : Colors.LIGHT_GREY_DARK;
 
   return (
     <View style={{ marginBottom: 10 }}>

@@ -49,7 +49,7 @@ type CustomTextProps = {
   children?: React.ReactNode;
 };
 
-const CustomText: React.FC<CustomTextProps> = ({
+const CustomText = ({
   textStyle,
   fontSize,
   marginTop,
@@ -78,7 +78,7 @@ const CustomText: React.FC<CustomTextProps> = ({
   numberOfLines,
   children,
   letterSpacing,
-}) => {
+}: CustomTextProps): JSX.Element => {
   return (
     <Text
       numberOfLines={numberOfLines}
@@ -91,22 +91,22 @@ const CustomText: React.FC<CustomTextProps> = ({
           marginBottom: marginBottom || 0,
           marginLeft: marginLeft || 0,
           marginRight: marginRight || 0,
-          alignSelf: alignSelf,
+          alignSelf,
           fontFamily: fontFamily || fonts.regular,
-          fontStyle: fontStyle,
-          lineHeight: lineHeight,
+          fontStyle,
+          lineHeight,
           letterSpacing: letterSpacing || 0,
-          textAlign: textAlign,
-          textTransform: textTransform,
-          fontWeight: fontWeight,
-          bottom: bottom,
-          borderBottomWidth: borderBottomWidth,
-          borderColor: borderColor,
-          width: width,
-          marginVertical: marginVertical,
-          paddingBottom: paddingBottom,
-          right: right,
-          left: left,
+          textAlign,
+          textTransform,
+          fontWeight,
+          bottom,
+          borderBottomWidth,
+          borderColor,
+          width,
+          marginVertical,
+          paddingBottom,
+          right,
+          left,
           textDecorationLine: textDecorationLine || "none",
         },
         textStyle,

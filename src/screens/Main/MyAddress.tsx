@@ -77,7 +77,12 @@ const MyAddress = () => {
 
   return (
     <ScreenWrapper headerUnScrollable={() => <Header isBack />}>
-      <CustomText label="Delivery Address" fontSize={18} marginBottom={20} />
+      <CustomText
+        label="Delivery Address"
+        fontSize={18}
+        marginBottom={20}
+        fontFamily={fonts.semiBold}
+      />
 
       {inputs.map((item) => (
         <CustomInput
@@ -94,16 +99,24 @@ const MyAddress = () => {
         />
       ))}
 
-      <CustomText label="Billing Address" fontSize={18} marginBottom={20} marginTop={20} />
+      <CustomText
+        label="Billing Address"
+        fontSize={18}
+        marginBottom={20}
+        marginTop={20}
+      />
       <View
         style={{
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
-          
         }}
       >
-        <CustomText label="Match Delivery Address"fontSize={16} fontFamily={fonts.medium} />
+        <CustomText
+          label="Match Delivery Address"
+          fontSize={16}
+          fontFamily={fonts.medium}
+        />
         <Switch />
       </View>
     </ScreenWrapper>

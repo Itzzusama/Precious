@@ -1,13 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppStateStatus } from "react-native";
 import { ReducerNames } from "../../config/enums";
 
+// Define a proper interface for userData
+interface UserData {
+  id: string;
+  name: string;
+  email: string;
+}
+
 interface UserState {
-  token: String;
-  isOnBoarding: Boolean;
-  notificationCount: Number;
-  accountModal: Boolean;
-  userData: Object;
+  token: string;
+  isOnBoarding: boolean;
+  notificationCount: number;
+  accountModal: boolean;
+  userData: UserData | null;
 }
 
 export const userReducerInitialState: UserState = {
@@ -15,27 +21,25 @@ export const userReducerInitialState: UserState = {
   isOnBoarding: false,
   notificationCount: 0,
   accountModal: false,
-  userData: {},
+  userData: null,
 };
 
 const userSlice = createSlice({
   name: ReducerNames.UserReducer,
   initialState: userReducerInitialState,
   reducers: {
-    setToken(state, action: PayloadAction<String>) {
+    setToken(state, action: PayloadAction<string>) {
       state.token = action.payload;
     },
-    setUserData(state, action: PayloadAction<any>) {
-      state.token = action.payload;
+    setUserData(state, action: PayloadAction<UserData | null>) {  // <-- updated here
+      state.userData = action.payload;
     },
-
     setOnBoarding(state, action: PayloadAction<boolean>) {
       state.isOnBoarding = action.payload;
     },
     setAccountModal(state, action: PayloadAction<boolean>) {
       state.accountModal = action.payload;
     },
-
     setNotificationCount(state, action: PayloadAction<number>) {
       state.notificationCount = action.payload;
     },
@@ -49,4 +53,5 @@ export const {
   setOnBoarding,
   setUserData,
 } = userSlice.actions;
+
 export default userSlice.reducer;
